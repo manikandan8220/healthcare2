@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Healthcare Portal</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        body { 
+            background-color: #f2f6fc;
+            font-family: 'Segoe UI', sans-serif; 
+        }
+
+        /* ---- Premium Medical Navbar ---- */
+        .medical-navbar {
+            background: rgba(0, 123, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 22px;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .navbar-brand img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .nav-text {
+            color: white;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .btn-nav {
+            border-radius: 25px;
+            padding: 6px 18px;
+            font-weight: 600;
+        }
+
+        .btn-nav:hover {
+            background: white !important;
+            color: #0d6efd !important;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<!-- ------------------------------------ -->
+<!--          MEDICAL NAVBAR              -->
+<!-- ------------------------------------ -->
+<nav class="navbar navbar-expand-lg medical-navbar navbar-dark">
+    <div class="container">
+
+    <a class="navbar-brand d-flex align-items-center gap-2" href="{% url 'overview' %}">
+        <img src="{% static 'images/image.png' %}" alt="logo"
+            style="
+                width: 52px;
+                height: 52px;
+                border-radius: 60%;
+                object-fit: cover;
+                border: 2px solid rgba(38, 144, 177, 0.85);
+                box-shadow: 0 0 8px rgba(255,255,255,0.4);
+                padding: 2px;
+                background: white;
+            ">
+        <span style="font-weight: 700; font-size: 22px;">Healthcare Portal</span>
+    </a>
+
+
+        <!-- Right Side -->
+        <div class="d-flex">
+            {% if user.is_authenticated %}
+                <a class="btn btn-light btn-nav ms-2" href="{% url 'logout' %}">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                </a>
+            {% else %}
+                <a class="btn btn-light btn-nav ms-2" href="{% url 'login' %}">
+                    <i class="bi bi-person-circle"></i> Login
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+
+<!-- MAIN CONTENT -->
+<div class="container mt-4 mb-5">
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

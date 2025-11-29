@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #007bff, #00d4ff);
+        height: 100vh;
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        overflow: hidden;
+    }
+
+    .login-container {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+    }
+
+    /* LEFT CONTENT */
+    .info-section {
+        color: white;
+        max-width: 450px;
+        margin-right: 60px;
+        animation: slideLeft 0.8s ease-out;
+    }
+
+    .info-title {
+        font-size: 38px;
+        font-weight: 900;
+        line-height: 1.2;
+    }
+
+    .info-desc {
+        margin-top: 10px;
+        font-size: 17px;
+        opacity: 0.9;
+    }
+
+    .highlight-box {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        padding: 15px 20px;
+        border-radius: 15px;
+        margin-top: 20px;
+        font-size: 15px;
+        border-left: 5px solid white;
+    }
+
+    @keyframes slideLeft {
+        from { opacity: 0; transform: translateX(-40px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(35px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* LOGIN BOX */
+    .login-box {
+        width: 100%;
+        max-width: 380px;
+        padding: 35px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(15px);
+        box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+        border: 1px solid rgba(255,255,255,0.25);
+        animation: fadeUp 0.9s ease-out;
+    }
+
+    .login-title {
+        font-size: 28px;
+        font-weight: 800;
+        color: white;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .info-text {
+        text-align: center;
+        color: #eaf9ff;
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    label {
+        color: white;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+
+    .form-control {
+        background: rgba(255,255,255,0.2);
+        color: white;
+        border: 1px solid rgba(255,255,255,0.4);
+        border-radius: 12px;
+        padding: 12px;
+        transition: 0.3s;
+    }
+
+    .form-control:focus {
+        background: rgba(255,255,255,0.28);
+        box-shadow: 0 0 8px rgba(255,255,255,0.7);
+        border-color: #ffffff;
+    }
+
+    .btn-login {
+        width: 100%;
+        background: white;
+        color: #007bff;
+        font-weight: 700;
+        padding: 12px;
+        border-radius: 12px;
+        font-size: 17px;
+        margin-top: 10px;
+        transition: 0.3s;
+    }
+
+    .btn-login:hover {
+        background: #e6e6e6;
+        color: #0056b3;
+    }
+
+    .alert-custom {
+        border-radius: 12px;
+        font-size: 14px;
+        padding: 10px;
+    }
+</style>
+
+
+<div class="login-container">
+
+    <!-- LEFT PRESENTATION CONTENT -->
+    <div class="info-section">
+        <h1 class="info-title">Healthcare Monitoring<br>Made Smarter.</h1>
+        <p class="info-desc">
+            Track patients, monitor vitals, analyze records — all in one secure portal.
+        </p>
+
+        <div class="highlight-box">
+            🔹 24/7 Real-time monitoring<br>
+            🔹 Secure encrypted access<br>
+            🔹 Fast & accurate health insights<br>
+            🔹 Trusted by medical professionals
+        </div>
+    </div>
+
+
+    <!-- LOGIN BOX -->
+    <div class="login-box">
+        <h3 class="login-title">🔐 Secure Login</h3>
+        <p class="info-text">Login to access the patient dashboard</p>
+
+        {% if error %}
+            <div class="alert alert-danger text-center alert-custom">
+                {{ error }}
+            </div>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <label><i class="bi bi-person-fill"></i> Username</label>
+            <input type="text" name="username" class="form-control mb-3" required>
+
+            <label><i class="bi bi-lock-fill"></i> Password</label>
+            <input type="password" name="password" class="form-control mb-3" required>
+
+            <button class="btn btn-login shadow">Login</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

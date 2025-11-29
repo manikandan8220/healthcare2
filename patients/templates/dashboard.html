@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    /* Page Title */
+    .dash-title { 
+        font-weight: 900; 
+        font-size: 36px; 
+        color: #0d6efd; 
+        margin-bottom: 30px; 
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    /* Dashboard Cards */
+    .dash-card { 
+        border-radius: 20px; 
+        padding: 30px; 
+        background: rgba(255,255,255,0.85); 
+        backdrop-filter: blur(12px); 
+        box-shadow: 0 10px 25px rgba(0,0,0,0.12); 
+        border-left: 8px solid #0d6efd; 
+        transition: transform 0.3s, box-shadow 0.3s; 
+    }
+    .dash-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.18); }
+
+    .dash-number { 
+        font-size: 48px; 
+        font-weight: 900; 
+        color: #0d6efd; 
+    }
+
+    /* Alerts Box */
+    .alert-box { 
+        background: rgba(255,255,255,0.9); 
+        backdrop-filter: blur(12px); 
+        border-radius: 20px; 
+        padding: 25px; 
+        box-shadow: 0 8px 25px rgba(0,0,0,0.12); 
+        margin-top: 50px;
+    }
+    .alert-title { font-size: 24px; font-weight: 800; color: #dc3545; margin-bottom: 15px; }
+    .alert-item { 
+        background: #ffe6e6; 
+        padding: 12px 20px; 
+        border-radius: 12px; 
+        margin-bottom: 12px; 
+        color: #b30000; 
+        font-weight: 600; 
+        transition: transform 0.2s;
+    }
+    .alert-item:hover { transform: translateX(5px); }
+
+    /* Summary Badges */
+    .badge-summary { 
+        font-size: 16px; 
+        padding: 8px 16px; 
+        border-radius: 12px; 
+        color: white; 
+        margin-right: 8px; 
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+    }
+    .badge-bp { background: #0d6efd; }
+    .badge-sugar { background: #28a745; }
+    .badge-temp { background: #ffc107; color: #212529; }
+    .badge-hr { background: #dc3545; }
+
+    /* Button */
+    .patients-btn { font-size: 18px; padding: 12px 30px; font-weight: 700; border-radius: 12px; }
+
+</style>
+
+<!-- Dashboard Title -->
+<div class="py-4" style="text-align: center;">
+    <h1 class="dash-title"
+        style="color: #04abab;
+               display: inline-block;
+               border-bottom: 3px solid #04abab;
+               padding-bottom: 5px;
+               margin-bottom: 20px;">
+        📊 Dashboard Overview
+    </h1>
+</div>
+
+
+
+<!-- Summary Cards -->
+<div class="row g-4">
+    <div class="col-md-6 col-lg-3">
+        <div class="dash-card text-center">
+            <h5 class="fw-bold">Total Patients</h5>
+            <div class="dash-number">{{ total_patients }}</div>
+            <p class="text-muted mt-2">Registered patients</p>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="dash-card text-center">
+            <h5 class="fw-bold">Total Health Records</h5>
+            <div class="dash-number">{{ total_records }}</div>
+            <p class="text-muted mt-2">Recorded vitals</p>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="dash-card text-center">
+            <h5 class="fw-bold">Critical BP Alerts</h5>
+            <div class="badge-summary badge-bp">🔥 {{ critical_bp_count|default:"0" }}</div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="dash-card text-center">
+            <h5 class="fw-bold">High Sugar Alerts</h5>
+            <div class="badge-summary badge-sugar">🍬 {{ critical_sugar_count|default:"0" }}</div>
+        </div>
+    </div>
+</div>
+
+<!-- Detailed Alerts -->
+<div class="alert-box text-center"
+     style="border: 2px solid #04abab; 
+            border-radius: 15px; 
+            padding: 25px; 
+            background: #fff; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08); 
+            margin-top: 20px;">
+
+    <!-- Centered Title with Icon -->
+    <h3 class="alert-title" 
+        style="font-weight: bold; 
+               margin-bottom: 15px;">
+        <span class="material-icons" 
+              style="vertical-align: middle; 
+                     font-size: 30px; 
+                     color: #0ccfc2;">
+            warning
+        </span>
+        Critical Health Alerts
+    </h3>
+
+    <p class="text-muted mb-4" style="font-style: italic;">Immediate medical attention required:</p>
+
+    <!-- Alerts List with Icons -->
+    <div class="alert-item d-flex align-items-center justify-content-start" style="margin-bottom: 8px;">
+        <span class="material-icons text-danger me-2">favorite</span>
+         High BP patients (>140/90)
+    </div>
+
+    <div class="alert-item d-flex align-items-center justify-content-start" style="margin-bottom: 8px;">
+        <span class="material-icons text-success me-2">local_drink</span>
+         High Sugar Levels (>180 mg/dL)
+    </div>
+
+    <div class="alert-item d-flex align-items-center justify-content-start" style="margin-bottom: 8px;">
+        <span class="material-icons text-primary me-2">ac_unit</span>
+         Low Temperature (<95°F)
+    </div>
+
+    <div class="alert-item d-flex align-items-center justify-content-start">
+        <span class="material-icons text-danger me-2">monitor_heart</span>
+         Irregular Heart Rate (<60 or >100 bpm)
+    </div>
+</div>
+
+<!-- View Patients Button -->
+<div class="text-center mt-5">
+    <a href="{% url 'patient_list' %}" class="btn btn-primary patients-btn shadow">View All Patients →</a>
+</div>
+{% endblock %}

@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    /* Header & Cards */
+    .profile-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .card-glass { 
+        background: rgba(255,255,255,0.85); 
+        backdrop-filter: blur(12px); 
+        border-radius: 18px; 
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15); 
+        padding: 25px; 
+        transition: 0.3s; 
+    }
+    .card-glass:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.25); }
+    .vitals-card { text-align: center; border-radius: 12px; padding: 20px; transition: 0.3s; }
+    .vitals-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+    .vitals-title { font-weight: 600; margin-bottom: 8px; }
+    .vitals-value { font-size: 1.8rem; font-weight: 700; }
+    .badge-heart { background-color: #dc3545; }
+    .badge-bp { background-color: #0d6efd; }
+    .badge-sugar { background-color: #28a745; }
+    .badge-temp { background-color: #ffc107; }
+    .table thead th { background-color: #0d6efd; color: white; }
+    .btn-glass { border-radius: 10px; font-weight: 600; padding: 8px 20px; }
+</style>
+
+<!-- Header -->
+<div class="profile-header">
+    <h2 class="fw-bold text-primary">{{ patient.name }} — Profile</h2>
+    <a href="{% url 'patient_list' %}" class="btn btn-secondary btn-sm"><i class="bi bi-arrow-left-circle"></i> Back</a>
+</div>
+
+<!-- Patient Info Card -->
+<div class="card-glass mb-4" 
+     style="border: 2px solid #04abab; border-radius: 15px; padding: 20px; 
+            background: rgba(255, 255, 255, 0.15); box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
+    <div class="row align-items-center">
+        <div class="col-md-9">
+            <h4 class="fw-bold mb-3" style="color: #04abab; border-bottom: 2px solid #04abab; display: inline-block; padding-bottom: 5px;">
+                Patient Information
+            </h4>
+            <div class="row mt-3">
+                <div class="col-md-6 mb-2"><strong>Age:</strong> {{ patient.age }}</div>
+                <div class="col-md-6 mb-2"><strong>Gender:</strong> {{ patient.gender }}</div>
+                <div class="col-md-6 mb-2"><strong>Contact:</strong> {{ patient.contact }}</div>
+                <div class="col-md-6 mb-2"><strong>Address:</strong> {{ patient.address }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Vitals Overview -->
+
+<h4 style="color: #0c0c0c;font-style: italic;" class="mb-3">Latest Vitals Overview</h4>
+<div class="row g-3 mb-4">
+    <div class="col-md-3">
+        <div class="vitals-card shadow p-3 text-center" 
+             style="background: #fff; border: 3px solid #dc3545; border-radius: 12px;">
+            <div class="vitals-title fw-bold text-danger">Heart Rate</div>
+            <div class="vitals-value fs-4 fw-bold text-danger">{{ records.last.heart_rate|default:'--' }} bpm</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="vitals-card shadow p-3 text-center" 
+             style="background: #fff; border: 3px solid #0d6efd; border-radius: 12px;">
+            <div class="vitals-title fw-bold text-primary">Blood Pressure</div>
+            <div class="vitals-value fs-4 fw-bold text-primary">{{ records.last.blood_pressure|default:'--' }}</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="vitals-card shadow p-3 text-center" 
+             style="background: #fff; border: 3px solid #28a745; border-radius: 12px;">
+            <div class="vitals-title fw-bold text-success">Sugar Level</div>
+            <div class="vitals-value fs-4 fw-bold text-success">{{ records.last.sugar_level|default:'--' }} mg/dL</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="vitals-card shadow p-3 text-center" 
+             style="background: #fff; border: 3px solid #ffc107; border-radius: 12px;">
+            <div class="vitals-title fw-bold text-warning">Temperature</div>
+            <div class="vitals-value fs-4 fw-bold text-warning">{{ records.last.temperature|default:'--' }} °C</div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Health Records Table -->
+
+<h4 style="font-style: italic;" class="mb-3">Health Records History</h4>
+<div class="table-responsive mb-4">
+    <table class="table table-hover table-striped align-middle mb-0"
+           style="border: 3px solid #0d6efd; border-radius: 12px; overflow: hidden;">
+        <thead style="background-color: #0d6efd; color: #fff;">
+            <tr>
+                <th>Heart Rate</th>
+                <th>Blood Pressure</th>
+                <th>Sugar Level</th>
+                <th>Temperature</th>
+                <th>Updated</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in records %}
+            <tr>
+                <td>
+                    <span class="badge" 
+                          style="background-color: #dc3545; color: #fff; border-radius: 8px; padding: 5px 10px;">
+                        {{ r.heart_rate }} bpm
+                    </span>
+                </td>
+                <td>
+                    <span class="badge" 
+                          style="background-color: #0d6efd; color: #fff; border-radius: 8px; padding: 5px 10px;">
+                        {{ r.blood_pressure }}
+                    </span>
+                </td>
+                <td>
+                    <span class="badge" 
+                          style="background-color: #28a745; color: #fff; border-radius: 8px; padding: 5px 10px;">
+                        {{ r.sugar_level }} mg/dL
+                    </span>
+                </td>
+                <td>
+                    <span class="badge" 
+                          style="background-color: #ffc107; color: #000; border-radius: 8px; padding: 5px 10px;">
+                        {{ r.temperature }} °C
+                    </span>
+                </td>
+                <td>{{ r.updated_at|date:"d M Y H:i" }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center">No health records yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<!-- Add Health Record Form -->
+
+<h4 style="font-style: italic;" class="mb-3">Add New Health Record</h4>
+<div class="card-glass p-4 mb-5" 
+     style="background: rgba(255,255,255,0.15); 
+            backdrop-filter: blur(12px); 
+            border: 3px solid #0aa0b7; 
+            border-radius: 16px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);">
+
+    <form method="POST" class="row g-3">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <div class="col-12 text-center">
+            <button class="btn btn-primary btn-glass" 
+                    style="border-radius: 10px; font-weight: 600; padding: 10px 20px; 
+                           box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                <i class="bi bi-plus-circle"></i> Add Record
+            </button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
