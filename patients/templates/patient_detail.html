@@ -17,16 +17,16 @@
     .vitals-title { font-weight: 600; margin-bottom: 8px; }
     .vitals-value { font-size: 1.8rem; font-weight: 700; }
     .badge-heart { background-color: #dc3545; }
-    .badge-bp { background-color: #0d6efd; }
+    .badge-bp { background-color: #0de5fd; }
     .badge-sugar { background-color: #28a745; }
     .badge-temp { background-color: #ffc107; }
-    .table thead th { background-color: #0d6efd; color: white; }
+    .table thead th { background-color: #e66bea; color: white; }
     .btn-glass { border-radius: 10px; font-weight: 600; padding: 8px 20px; }
 </style>
 
 <!-- Header -->
 <div class="profile-header">
-    <h2 class="fw-bold text-primary">{{ patient.name }} — Profile</h2>
+    <h2 class="fw-bold " style="color: rgb(6, 147, 175);">{{ patient.name }} — Profile</h2>
     <a href="{% url 'patient_list' %}" class="btn btn-secondary btn-sm"><i class="bi bi-arrow-left-circle"></i> Back</a>
 </div>
 
@@ -57,29 +57,29 @@
     <div class="col-md-3">
         <div class="vitals-card shadow p-3 text-center" 
              style="background: #fff; border: 3px solid #fcdc7d; border-radius: 12px;">
-            <div class="vitals-title fw-bold text-danger">Heart Rate</div>
-            <div class="vitals-value fs-4 fw-bold text-danger">{{ records.last.heart_rate|default:'--' }} bpm</div>
+            <div class="vitals-title fw-bold" style="color: cadetblue;" >Heart Rate</div>
+            <div class="vitals-value fs-4 fw-bold" style="color: cadetblue;">{{ records.last.heart_rate|default:'--' }} bpm</div>
         </div>
     </div>
     <div class="col-md-3">
         <div class="vitals-card shadow p-3 text-center" 
              style="background: #fff; border: 3px solid #fcdc7d; border-radius: 12px;">
-            <div class="vitals-title fw-bold text-primary">Blood Pressure</div>
-            <div class="vitals-value fs-4 fw-bold text-primary">{{ records.last.blood_pressure|default:'--' }}</div>
+            <div class="vitals-title fw-bold" style="color: cadetblue;">Blood Pressure</div>
+            <div class="vitals-value fs-4 fw-bold" style="color: cadetblue;">{{ records.last.blood_pressure|default:'--' }}</div>
         </div>
     </div>
     <div class="col-md-3">
         <div class="vitals-card shadow p-3 text-center" 
              style="background: #fff; border: 3px solid #fcdc7d; border-radius: 12px;">
-            <div class="vitals-title fw-bold text-success">Sugar Level</div>
-            <div class="vitals-value fs-4 fw-bold text-success">{{ records.last.sugar_level|default:'--' }} mg/dL</div>
+            <div class="vitals-title fw-bold " style="color: cadetblue;">Sugar Level</div>
+            <div class="vitals-value fs-4 fw-bold "style="color: cadetblue;">{{ records.last.sugar_level|default:'--' }} mg/dL</div>
         </div>
     </div>
     <div class="col-md-3">
         <div class="vitals-card shadow p-3 text-center" 
              style="background: #fff; border: 3px solid #fcdc7d; border-radius: 12px;">
-            <div class="vitals-title fw-bold text-warning">Temperature</div>
-            <div class="vitals-value fs-4 fw-bold text-warning">{{ records.last.temperature|default:'--' }} °C</div>
+            <div class="vitals-title fw-bold" style="color: cadetblue;">Temperature</div>
+            <div class="vitals-value fs-4 fw-bold " style="color: cadetblue;">{{ records.last.temperature|default:'--' }} °C</div>
         </div>
     </div>
 </div>
@@ -90,16 +90,17 @@
 <h4 style="font-style: italic;" class="mb-3">Health Records History</h4>
 <div class="table-responsive mb-4">
     <table class="table table-hover table-striped align-middle mb-0"
-           style="border: 3px solid #688ec7; border-radius: 12px; overflow: hidden;">
-        <thead style="background-color: #6f98d7; color: #fff;">
-            <tr>
-                <th>Heart Rate</th>
-                <th>Blood Pressure</th>
-                <th>Sugar Level</th>
-                <th>Temperature</th>
-                <th>Updated</th>
-            </tr>
-        </thead>
+           style="border: 3px solid #0bdee6; border-radius: 12px; overflow: hidden;">
+ <thead style="background-color: red; color: #0a869f;">
+    <tr>
+        <th>Heart Rate</th>
+        <th>Blood Pressure</th>
+        <th>Sugar Level</th>
+        <th>Temperature</th>
+        <th>Updated</th>
+    </tr>
+</thead>
+
         <tbody>
             {% for r in records %}
             <tr>
@@ -154,7 +155,7 @@
         {{ form.as_p }}
 
         <div class="col-12 text-center">
-            <button class="btn btn-primary btn-glass" 
+            <button class="btn btn-success btn-glass" 
                     style="border-radius: 10px; font-weight: 600; padding: 10px 20px; 
                            box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
                 <i class="bi bi-plus-circle"></i> Add Record

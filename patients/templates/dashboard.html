@@ -25,7 +25,7 @@
     .dash-number { 
         font-size: 48px; 
         font-weight: 900; 
-        color: #0d6efd; 
+        color: #fd0de5; 
     }
 
     /* Alerts Box */
@@ -61,8 +61,8 @@
         align-items: center;
         gap: 5px;
     }
-    .badge-bp { background: #0d6efd; }
-    .badge-sugar { background: #28a745; }
+    .badge-bp { background: #0bdbde; }
+    .badge-sugar { background: #0ad6e1; }
     .badge-temp { background: #ffc107; color: #212529; }
     .badge-hr { background: #dc3545; }
 
@@ -163,6 +163,6 @@
 
 <!-- View Patients Button -->
 <div class="text-center mt-5">
-    <a href="{% url 'patient_list' %}" class="btn btn-primary patients-btn shadow">View All Patients →</a>
+    <a href="{% url 'patient_list' %}" class="btn btn-success patients-btn shadow">View All Patients →</a>
 </div>
 {% endblock %}
