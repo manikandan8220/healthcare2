@@ -56,28 +56,28 @@
 <div class="row g-3 mb-4">
     <div class="col-md-3">
         <div class="vitals-card shadow p-3 text-center" 
-             style="background: #fff; border: 3px solid #dc3545; border-radius: 12px;">
+             style="background: #fff; border: 3px solid #fcdc7d; border-radius: 12px;">
             <div class="vitals-title fw-bold text-danger">Heart Rate</div>
             <div class="vitals-value fs-4 fw-bold text-danger">{{ records.last.heart_rate|default:'--' }} bpm</div>
         </div>
     </div>
     <div class="col-md-3">
         <div class="vitals-card shadow p-3 text-center" 
-             style="background: #fff; border: 3px solid #0d6efd; border-radius: 12px;">
+             style="background: #fff; border: 3px solid #fcdc7d; border-radius: 12px;">
             <div class="vitals-title fw-bold text-primary">Blood Pressure</div>
             <div class="vitals-value fs-4 fw-bold text-primary">{{ records.last.blood_pressure|default:'--' }}</div>
         </div>
     </div>
     <div class="col-md-3">
         <div class="vitals-card shadow p-3 text-center" 
-             style="background: #fff; border: 3px solid #28a745; border-radius: 12px;">
+             style="background: #fff; border: 3px solid #fcdc7d; border-radius: 12px;">
             <div class="vitals-title fw-bold text-success">Sugar Level</div>
             <div class="vitals-value fs-4 fw-bold text-success">{{ records.last.sugar_level|default:'--' }} mg/dL</div>
         </div>
     </div>
     <div class="col-md-3">
         <div class="vitals-card shadow p-3 text-center" 
-             style="background: #fff; border: 3px solid #ffc107; border-radius: 12px;">
+             style="background: #fff; border: 3px solid #fcdc7d; border-radius: 12px;">
             <div class="vitals-title fw-bold text-warning">Temperature</div>
             <div class="vitals-value fs-4 fw-bold text-warning">{{ records.last.temperature|default:'--' }} °C</div>
         </div>
@@ -90,8 +90,8 @@
 <h4 style="font-style: italic;" class="mb-3">Health Records History</h4>
 <div class="table-responsive mb-4">
     <table class="table table-hover table-striped align-middle mb-0"
-           style="border: 3px solid #0d6efd; border-radius: 12px; overflow: hidden;">
-        <thead style="background-color: #0d6efd; color: #fff;">
+           style="border: 3px solid #688ec7; border-radius: 12px; overflow: hidden;">
+        <thead style="background-color: #6f98d7; color: #fff;">
             <tr>
                 <th>Heart Rate</th>
                 <th>Blood Pressure</th>
@@ -105,25 +105,25 @@
             <tr>
                 <td>
                     <span class="badge" 
-                          style="background-color: #dc3545; color: #fff; border-radius: 8px; padding: 5px 10px;">
+                          style="background-color: #4beded; color: #fff; border-radius: 8px; padding: 5px 10px;">
                         {{ r.heart_rate }} bpm
                     </span>
                 </td>
                 <td>
                     <span class="badge" 
-                          style="background-color: #0d6efd; color: #fff; border-radius: 8px; padding: 5px 10px;">
+                          style="background-color:#4beded; color: #fff; border-radius: 8px; padding: 5px 10px;">
                         {{ r.blood_pressure }}
                     </span>
                 </td>
                 <td>
                     <span class="badge" 
-                          style="background-color: #28a745; color: #fff; border-radius: 8px; padding: 5px 10px;">
+                          style="background-color: #4beded; color: #fff; border-radius: 8px; padding: 5px 10px;">
                         {{ r.sugar_level }} mg/dL
                     </span>
                 </td>
                 <td>
                     <span class="badge" 
-                          style="background-color: #ffc107; color: #000; border-radius: 8px; padding: 5px 10px;">
+                          style="background-color: #4beded; color: #000; border-radius: 8px; padding: 5px 10px;">
                         {{ r.temperature }} °C
                     </span>
                 </td>

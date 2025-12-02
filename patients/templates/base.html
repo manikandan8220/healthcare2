@@ -20,12 +20,25 @@
             font-family: 'Segoe UI', sans-serif; 
         }
 
-        /* ---- Premium Medical Navbar ---- */
+        /* ---- Premium Medical Sticky Navbar ---- */
         .medical-navbar {
             background: rgba(0, 123, 255, 0.85);
             backdrop-filter: blur(10px);
             border-bottom: 2px solid rgba(255, 255, 255, 0.2);
             padding: 12px 0;
+
+            /* ⭐ MAKE NAVBAR STICKY ⭐ */
+            position: sticky;
+            top: 0;
+            z-index: 1200;
+
+            transition: 0.3s ease;
+        }
+
+        /* Scroll Shadow Effect */
+        .navbar-scrolled {
+            background: rgba(0, 123, 255, 0.95) !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
 
         .navbar-brand {
@@ -85,7 +98,6 @@
         <span style="font-weight: 700; font-size: 22px;">Healthcare Portal</span>
     </a>
 
-
         <!-- Right Side -->
         <div class="d-flex">
             {% if user.is_authenticated %}
@@ -106,6 +118,19 @@
 <div class="container mt-4 mb-5">
     {% block content %}{% endblock %}
 </div>
+
+
+<!-- ⭐ Scroll Effect Script ⭐ -->
+<script>
+    window.addEventListener("scroll", () => {
+        const navbar = document.querySelector(".medical-navbar");
+        if (window.scrollY > 20) {
+            navbar.classList.add("navbar-scrolled");
+        } else {
+            navbar.classList.remove("navbar-scrolled");
+        }
+    });
+</script>
 
 </body>
 </html>
