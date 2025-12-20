@@ -1,204 +1,247 @@
 {% extends "base.html" %}
 {% block content %}
 
-<!-- HEADER SECTION -->
-<div class="bg-primary text-white text-center py-5 rounded shadow-lg"
-     style="background: linear-gradient(135deg,#6c89b8,#64b8ed);">
-    <h1 class="fw-bold display-5" style="color: rgb(205, 15, 196);">Healthcare Patient Monitoring Portal</h1>
-    <p class="lead mt-3">
-        Advanced real-time monitoring system for Blood Pressure, Sugar Levels, Heart Rate,
-        and Temperature with medical-grade accuracy.
-    </p>
-    <a href="/login/" class="btn btn-light btn-lg mt-3 fw-bold px-4 shadow">
-        Login to Portal
-    </a>
-</div>
+<!-- ===================================================== -->
+<!-- ADVANCED CLINICAL PATIENT MONITORING SYSTEM -->
+<!-- Hospital Grade | Animated | Visual | Medical Only -->
+<!-- ===================================================== -->
 
-<!-- PARAMETER SECTION -->
-<div class="container mt-5">
-
-    <h2 class="fw-bold text-center mb-4" 
-        style="text-decoration: underline; 
-            text-decoration-color: #08a7b9; 
-            text-underline-offset: 6px;
-            font-style: italic;">
-        Vital Health Parameters We Monitor
-     </h2>
-
-
-    <div class="row g-4">
-
-        <!-- BLOOD PRESSURE CARD -->
-     
-            <div class="col-md-6">
-                <div class="card shadow-lg p-4 h-100"
-                    style="
-                        border: 0;
-                        border-radius: 22px;
-                        border-left: 8px solid #ff4b4b;
-                        background: #ffffff;
-                        box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-                    ">
-                    
-                    <h4 class="fw-bold text-warning">
-                        <i class="bi bi-heart-pulse-fill"></i> Blood Pressure (BP)
-                    </h4>
-
-                    <p class="mt-3"><strong>Normal Range:</strong></p>
-                    <ul class="mb-3">
-                        <li>Systolic (Upper): <strong>90 – 120 mmHg</strong></li>
-                        <li>Diastolic (Lower): <strong>60 – 80 mmHg</strong></li>
-                    </ul>
-
-                    <div class="alert alert-danger py-2 rounded-3" 
-                        style="border-left: 5px solid #c82333;">
-                        <b>High BP:</b> Above 130/80 mmHg
-                    </div>
-
-                    <div class="alert alert-warning py-2 rounded-3"
-                        style="border-left: 5px solid #ff8800;">
-                        <b>Low BP:</b> Below 90/60 mmHg
-                    </div>
-
-                    <p class="text-muted" style="font-style: italic;">
-                        BP indicates heart and artery health. High BP strains the heart; low BP
-                        causes dizziness and weakness.
-                    </p>
-                </div>
-            </div>
-
-
-        <!-- SUGAR CARD -->
-
-        <div class="col-md-6">
-            <div class="card p-4 h-100"
-                style="
-                    border: 0;
-                    border-radius: 22px;
-                    border-left: 8px solid #ff9900;
-                    background: #ffffff;
-                    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-                ">
-                
-                <h4 class="fw-bold text-warning">
-                    <i class="bi bi-droplet-half"></i> Blood Sugar / Glucose
-                </h4>
-
-                <p class="mt-3"><strong>Normal Range:</strong></p>
-                <p>Fasting: <strong>70 – 100 mg/dL</strong></p>
-                <p>Post-meal: <strong>120 – 140 mg/dL</strong></p>
-
-                <!-- High Alert -->
-                <div class="alert alert-danger py-2 rounded-3"
-                    style="border-left: 5px solid #d00000;">
-                    <b>High:</b> Above 180 mg/dL
-                </div>
-
-                <!-- Low Alert -->
-                <div class="alert alert-warning py-2 rounded-3"
-                    style="border-left: 5px solid #ff9900;">
-                    <b>Low:</b> Below 70 mg/dL
-                </div>
-
-                <p class="text-muted" style="font-style: italic;">
-                    Sugar levels help in diabetes evaluation. High levels damage organs; 
-                    low levels cause fainting and sweating.
-                </p>
-            </div>
-        </div>
-
-
-        <!-- HEART RATE CARD -->
-
-        <div class="col-md-6">
-            <div class="card p-4 h-100"
-                style="
-                    border: 0;
-                    border-radius: 22px;
-                    border-left: 8px solid #28a745;   /* GREEN BORDER */
-                    background: #ffffff;
-                    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-                ">
-                
-                <h4 class="fw-bold text-warning">
-                    <i class="bi bi-heart-fill"></i> Heart Rate (Pulse)
-                </h4>
-
-                <p class="mt-3"><strong>Normal:</strong> 60 – 100 bpm</p>
-
-                <!-- Tachycardia -->
-                <div class="alert alert-danger py-2 rounded-3"
-                    style="border-left: 5px solid #d00000;">
-                    <b>Tachycardia:</b> Above 100 bpm
-                </div>
-
-                <!-- Bradycardia -->
-                <div class="alert alert-warning py-2 rounded-3"
-                    style="border-left: 5px solid #28a745;">
-                    <b>Bradycardia:</b> Below 60 bpm
-                </div>
-
-                <p class="text-muted" style="font-style: italic;">
-                    Pulse detects stress levels, heart issues, and overall cardiovascular performance.
-                </p>
-            </div>
-        </div>
-
-
-        <!-- TEMPERATURE CARD -->
-
-        <div class="col-md-6">
-            <div class="card p-4 h-100"
-                style="
-                    border: 0;
-                    border-radius: 22px;
-                    border-left: 8px solid #ffcc00;  /* YELLOW BORDER */
-                    background: #ffffff;
-                    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-                ">
-
-                <h4 class="fw-bold" style="color:#ffcc00;">
-                    <i class="bi bi-thermometer-sun"></i> Body Temperature
-                </h4>
-
-                <p class="mt-3"><strong>Normal:</strong> 97°F – 99°F (36.1°C – 37.2°C)</p>
-
-                <!-- Fever -->
-                <div class="alert alert-danger py-2 rounded-3"
-                    style="border-left: 5px solid #d00000;">
-                    <b>Fever:</b> Above 100.4°F (38°C)
-                </div>
-
-                <!-- Hypothermia -->
-                <div class="alert alert-warning py-2 rounded-3"
-                    style="border-left: 5px solid #ffcc00;">
-                    <b>Hypothermia:</b> Below 95°F (35°C)
-                </div>
-
-                <p class="text-muted" style="font-style: italic;">
-                    Temperature helps detect infections, fever, metabolic issues, and overall immunity.
-                </p>
-            </div>
-        </div>
+<!-- ================= TOP BAR ================= -->
+<header class="topbar">
+  <div class="container d-flex justify-content-between align-items-center">
+    <div class="brand">
+      <img src="https://cdn-icons-png.flaticon.com/512/2966/2966327.png" alt="medical" />
+      <span>Clinical Patient Monitoring</span>
     </div>
-</div>
+    <a href="/login/" class="btn btn-sm btn-outline-primary">Staff Login</a>
+  </div>
+</header>
 
-<!-- WHY IMPORTANT SECTION -->
-
-
-<div class="text-center mt-5 mb-5 py-4 bg-light rounded-3 shadow-sm"
-     style="
-        border: 4px solid #950847;        
-        border-radius: 20px;              
-     ">
-    <h2 class="fw-bold" style="color:#111213;">Why Is Vital Monitoring Important?</h2>
-
-    <p class="lead mt-3 px-3" 
-       style="font-style: italic; color: #066167;">
-        Continuous monitoring detects early warning signs and helps doctors 
-        respond quickly, preventing complications and improving patient safety.
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="container text-center">
+    <h1 class="fade-up">Patient Health Monitoring System</h1>
+    <p class="fade-up delay-1">
+      Continuous observation of vital signs for hospital and clinical care.
     </p>
-</div>
+  </div>
+</section>
 
+<!-- ================= CORE CAPABILITIES ================= -->
+<section class="container section">
+  <div class="row g-4 text-center">
+    <div class="col-md-3">
+      <div class="capability-card slide-up">
+        <img src="https://cdn-icons-png.flaticon.com/512/942/942751.png" />
+        <h6>Real-Time Monitoring</h6>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="capability-card slide-up delay-1">
+        <img src="https://cdn-icons-png.flaticon.com/512/3209/3209265.png" />
+        <h6>ICU & Ward Support</h6>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="capability-card slide-up delay-2">
+        <img src="https://cdn-icons-png.flaticon.com/512/4248/4248443.png" />
+        <h6>Clinical Accuracy</h6>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="capability-card slide-up delay-3">
+        <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" />
+        <h6>Secure Medical Data</h6>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VITALS DASHBOARD ================= -->
+<section class="container section">
+  <h3 class="section-title text-center">Monitored Vital Signs</h3>
+  <div class="row g-4 mt-4 text-center">
+    <div class="col-md-3"><div class="vital-card bp pulse">Blood Pressure</div></div>
+    <div class="col-md-3"><div class="vital-card hr pulse">Heart Rate</div></div>
+    <div class="col-md-3"><div class="vital-card spo2 pulse">SpO₂</div></div>
+    <div class="col-md-3"><div class="vital-card temp pulse">Temperature</div></div>
+    <div class="col-md-3"><div class="vital-card sugar pulse">Blood Glucose</div></div>
+    <div class="col-md-3"><div class="vital-card rr pulse">Respiratory Rate</div></div>
+    <div class="col-md-3"><div class="vital-card ecg pulse">ECG</div></div>
+    <div class="col-md-3"><div class="vital-card bmi pulse">BMI</div></div>
+  </div>
+</section>
+
+<!-- ================= PATIENT STATUS ================= -->
+<section class="container section">
+  <h3 class="section-title text-center">Patient Condition</h3>
+  <div class="row g-4 mt-4 text-center">
+    <div class="col-md-4">
+      <div class="status-card stable fade-in">Stable</div>
+    </div>
+    <div class="col-md-4">
+      <div class="status-card observe fade-in delay-1">Under Observation</div>
+    </div>
+    <div class="col-md-4">
+      <div class="status-card critical fade-in delay-2">Critical</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLINICAL FLOW ================= -->
+<section class="container section">
+  <h3 class="section-title text-center">Clinical Data Flow</h3>
+  <div class="flow-container">
+    <div class="flow-step">Patient</div>
+    <div class="flow-line"></div>
+    <div class="flow-step">Monitoring Device</div>
+    <div class="flow-line"></div>
+    <div class="flow-step">Hospital System</div>
+    <div class="flow-line"></div>
+    <div class="flow-step">Doctor / Nurse</div>
+  </div>
+</section>
+
+<!-- ================= SECURITY ================= -->
+<section class="container section mb-5">
+  <h3 class="section-title text-center">Medical Data Protection</h3>
+  <div class="security-box fade-up">
+    <p>✔ Role-based access for medical staff</p>
+    <p>✔ Encrypted patient records</p>
+    <p>✔ Secure authentication and audit logs</p>
+  </div>
+</section>
+
+<!-- ================= STYLES ================= -->
+<style>
+body{
+  background:#f4f7fb;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto;
+}
+
+/* TOP BAR */
+.topbar{
+  background:#fff;
+  border-bottom:1px solid #e3e6ea;
+  padding:0.8rem 0;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:600;
+}
+.brand img{width:28px}
+
+/* HERO */
+.hero{
+  background:#e9f4ff;
+  padding:5rem 0;
+}
+
+/* SECTIONS */
+.section{margin:4rem auto}
+.section-title{
+  font-weight:600;
+  border-left:5px solid #0d6efd;
+  padding-left:10px;
+}
+
+/* CAPABILITIES */
+.capability-card{
+  background:#fff;
+  padding:2rem;
+  border-radius:14px;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+}
+.capability-card img{
+  width:48px;
+  margin-bottom:10px;
+}
+
+/* VITALS */
+.vital-card{
+  background:#fff;
+  padding:1.4rem;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,.1);
+  font-weight:600;
+}
+.bp{border-left:5px solid #dc3545}
+.hr{border-left:5px solid #198754}
+.spo2{border-left:5px solid #0dcaf0}
+.temp{border-left:5px solid #ffc107}
+.sugar{border-left:5px solid #fd7e14}
+.rr{border-left:5px solid #20c997}
+.ecg{border-left:5px solid #6f42c1}
+.bmi{border-left:5px solid #0d6efd}
+
+/* STATUS */
+.status-card{
+  background:#fff;
+  padding:2rem;
+  border-radius:14px;
+  font-weight:600;
+}
+.stable{border-left:6px solid #198754}
+.observe{border-left:6px solid #ffc107}
+.critical{border-left:6px solid #dc3545}
+
+/* FLOW */
+.flow-container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+}
+.flow-step{
+  background:#fff;
+  padding:1rem 1.5rem;
+  border-radius:10px;
+  font-weight:600;
+}
+.flow-line{
+  width:40px;
+  height:2px;
+  background:#0d6efd;
+}
+
+/* SECURITY */
+.security-box{
+  background:#fff;
+  padding:2rem;
+  border-radius:14px;
+  max-width:600px;
+  margin:auto;
+}
+
+/* ANIMATIONS */
+.fade-up{animation:fadeUp 0.8s ease both}
+.fade-in{animation:fadeIn 0.8s ease both}
+.slide-up{animation:slideUp 0.8s ease both}
+.pulse{animation:pulse 2s infinite}
+
+.delay-1{animation-delay:.2s}
+.delay-2{animation-delay:.4s}
+.delay-3{animation-delay:.6s}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:none}
+}
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:none}
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 rgba(13,110,253,.4)}
+  50%{box-shadow:0 0 15px rgba(13,110,253,.4)}
+  100%{box-shadow:0 0 0 rgba(13,110,253,.4)}
+}
+</style>
 
 {% endblock %}

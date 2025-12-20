@@ -1,16 +1,101 @@
 {% extends "base.html" %}
 {% block content %}
-<h1 class="mb-4 " style="color: violet;">➕ Add New Patient</h1>
 
-<div class="card shadow-lg p-4" 
-     style="border: 2px solid #04abab; border-radius: 15px;">
-    <form method="POST">
+<style>
+:root {
+    --primary: #04abab;
+    --success: #28a745;
+    --glass: rgba(255,255,255,0.95);
+}
+
+/* Page Header */
+.page-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: violet;
+    margin-bottom: 30px;
+}
+
+/* Form Card */
+.form-card {
+    background: var(--glass);
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    border: 2px solid var(--primary);
+    max-width: 700px;
+    margin: auto;
+}
+
+/* Form Inputs */
+.form-card label {
+    font-weight: 600;
+    margin-top: 12px;
+}
+.form-card input, 
+.form-card select, 
+.form-card textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    transition: 0.3s;
+}
+.form-card input:focus, 
+.form-card select:focus, 
+.form-card textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 8px rgba(0,170,171,0.3);
+    outline: none;
+}
+
+/* Submit Button */
+.btn-save {
+    background: var(--success);
+    color: #fff;
+    font-weight: 700;
+    padding: 12px 25px;
+    border-radius: 12px;
+    border: none;
+    transition: 0.3s;
+    margin-top: 20px;
+}
+.btn-save:hover {
+    background: #20c997;
+    color: #fff;
+}
+
+/* Centering & Responsiveness */
+@media (max-width: 768px) {
+    .form-card {
+        padding: 20px;
+    }
+}
+</style>
+
+<!-- PAGE HEADER -->
+<h1 class="page-title text-center">➕ Add New Patient</h1>
+
+<!-- FORM CARD -->
+<div class="form-card">
+    <form method="POST" novalidate>
         {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-success mt-3" 
-                style="border:1px solid #04abab; border-radius:5px;">
-            ✔ Save Patient
-        </button>
+        <div class="row g-3">
+            {% for field in form %}
+            <div class="col-md-6">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                    <div class="text-danger mt-1">{{ field.errors|striptags }}</div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-save">✔ Save Patient</button>
+        </div>
     </form>
 </div>
+
 {% endblock %}

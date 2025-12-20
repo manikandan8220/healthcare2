@@ -1,165 +1,185 @@
 {% extends "base.html" %}
 {% block content %}
+
 <style>
-    /* Header & Cards */
-    .profile-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-    .card-glass { 
-        background: rgba(255,255,255,0.85); 
-        backdrop-filter: blur(12px); 
-        border-radius: 18px; 
-        box-shadow: 0 8px 25px rgba(0,0,0,0.15); 
-        padding: 25px; 
-        transition: 0.3s; 
-    }
-    .card-glass:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.25); }
-    .vitals-card { text-align: center; border-radius: 12px; padding: 20px; transition: 0.3s; }
-    .vitals-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
-    .vitals-title { font-weight: 600; margin-bottom: 8px; }
-    .vitals-value { font-size: 1.8rem; font-weight: 700; }
-    .badge-heart { background-color: #dc3545; }
-    .badge-bp { background-color: #0de5fd; }
-    .badge-sugar { background-color: #28a745; }
-    .badge-temp { background-color: #ffc107; }
-    .table thead th { background-color: #e66bea; color: white; }
-    .btn-glass { border-radius: 10px; font-weight: 600; padding: 8px 20px; }
+:root {
+    --primary: #0aa6b7;
+    --danger: #dc3545;
+    --success: #28a745;
+    --glass: rgba(255,255,255,0.95);
+    --neutral: #f5f5f5;
+}
+
+/* General Section Card */
+.section-card {
+    background: var(--glass);
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    margin-bottom: 25px;
+}
+
+/* Header */
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Status Pill */
+.status-pill {
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 14px;
+}
+.status-critical { background: #ffe5e5; color: var(--danger); }
+.status-stable { background: #e9fff2; color: var(--success); }
+
+/* Tabs */
+.tab-btn {
+    border: none;
+    background: var(--neutral);
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.tab-btn.active {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* Vitals Boxes */
+.vital-box {
+    padding: 20px;
+    border-radius: 14px;
+    text-align: center;
+    border: 2px solid #eee;
+    transition: 0.3s;
+}
+.vital-danger { border-color: var(--danger); background: #ffecec; }
+.vital-safe { border-color: var(--success); background: #eafff1; }
+.vital-title { font-weight: 600; margin-bottom: 8px; font-size: 16px; }
+.vital-value { font-size: 1.5rem; font-weight: 700; }
+
+/* Table */
+.table th, .table td {
+    vertical-align: middle !important;
+}
+.table th {
+    background-color: var(--primary);
+    color: #fff;
+}
 </style>
 
-<!-- Header -->
+<!-- HEADER -->
 <div class="profile-header">
-    <h2 class="fw-bold " style="color: rgb(6, 147, 175);">{{ patient.name }} — Profile</h2>
-    <a href="{% url 'patient_list' %}" class="btn btn-secondary btn-sm"><i class="bi bi-arrow-left-circle"></i> Back</a>
+    <h2 class="fw-bold">{{ patient.name }} – Profile</h2>
+    <a href="{% url 'patient_list' %}" class="btn btn-outline-secondary btn-sm">⬅ Back</a>
 </div>
 
-<!-- Patient Info Card -->
-<div class="card-glass mb-4" 
-     style="border: 2px solid #04abab; border-radius: 15px; padding: 20px; 
-            background: rgba(255, 255, 255, 0.15); box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
-    <div class="row align-items-center">
-        <div class="col-md-9">
-            <h4 class="fw-bold mb-3" style="color: #04abab; border-bottom: 2px solid #04abab; display: inline-block; padding-bottom: 5px;">
-                Patient Information
-            </h4>
-            <div class="row mt-3">
-                <div class="col-md-6 mb-2"><strong>Age:</strong> {{ patient.age }}</div>
-                <div class="col-md-6 mb-2"><strong>Gender:</strong> {{ patient.gender }}</div>
-                <div class="col-md-6 mb-2"><strong>Contact:</strong> {{ patient.contact }}</div>
-                <div class="col-md-6 mb-2"><strong>Address:</strong> {{ patient.address }}</div>
+<!-- STATUS SUMMARY -->
+<div class="section-card d-flex justify-content-between align-items-center flex-wrap">
+    <div>
+        <h5 class="fw-bold mb-1">Patient Summary</h5>
+        <p class="mb-1">Age: {{ patient.age }} | Gender: {{ patient.gender }}</p>
+        <p class="mb-0 text-muted">Total Records: {{ records|length }}</p>
+    </div>
+    {% if records.last.heart_rate and records.last.heart_rate > 100 %}
+        <span class="status-pill status-critical mt-2 mt-md-0">🔴 Critical</span>
+    {% else %}
+        <span class="status-pill status-stable mt-2 mt-md-0">🟢 Stable</span>
+    {% endif %}
+</div>
+
+<!-- TABS -->
+<div class="mb-3 d-flex flex-wrap">
+    <button class="tab-btn active">Overview</button>
+    <button class="tab-btn">Vitals</button>
+    <button class="tab-btn">Add Record</button>
+    <button class="tab-btn">Alerts</button>
+</div>
+
+<!-- OVERVIEW -->
+<div class="section-card">
+    <h5 class="fw-bold mb-3">Latest Vitals Snapshot</h5>
+    <div class="row g-3">
+        <!-- Heart Rate -->
+        <div class="col-md-3 col-sm-6">
+            <div class="vital-box {% if records.last.heart_rate and records.last.heart_rate > 100 %}vital-danger{% else %}vital-safe{% endif %}">
+                <div class="vital-title">❤️ Heart Rate</div>
+                <div class="vital-value">{{ records.last.heart_rate|default:"--" }} bpm</div>
+            </div>
+        </div>
+        <!-- Blood Pressure -->
+        <div class="col-md-3 col-sm-6">
+            <div class="vital-box vital-safe">
+                <div class="vital-title">🩸 Blood Pressure</div>
+                <div class="vital-value">{{ records.last.blood_pressure|default:"--" }}</div>
+            </div>
+        </div>
+        <!-- Sugar -->
+        <div class="col-md-3 col-sm-6">
+            <div class="vital-box {% if records.last.sugar_level and records.last.sugar_level > 180 %}vital-danger{% else %}vital-safe{% endif %}">
+                <div class="vital-title">🍬 Sugar</div>
+                <div class="vital-value">{{ records.last.sugar_level|default:"--" }} mg/dL</div>
+            </div>
+        </div>
+        <!-- Temperature -->
+        <div class="col-md-3 col-sm-6">
+            <div class="vital-box vital-safe">
+                <div class="vital-title">🌡 Temperature</div>
+                <div class="vital-value">{{ records.last.temperature|default:"--" }} °C</div>
             </div>
         </div>
     </div>
 </div>
 
-
-<!-- Vitals Overview -->
-
-<h4 style="color: #0c0c0c;font-style: italic;" class="mb-3">Latest Vitals Overview</h4>
-<div class="row g-3 mb-4">
-    <div class="col-md-3">
-        <div class="vitals-card shadow p-3 text-center" 
-             style="background: #fff; border: 3px solid #fcdc7d; border-radius: 12px;">
-            <div class="vitals-title fw-bold" style="color: cadetblue;" >Heart Rate</div>
-            <div class="vitals-value fs-4 fw-bold" style="color: cadetblue;">{{ records.last.heart_rate|default:'--' }} bpm</div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="vitals-card shadow p-3 text-center" 
-             style="background: #fff; border: 3px solid #fcdc7d; border-radius: 12px;">
-            <div class="vitals-title fw-bold" style="color: cadetblue;">Blood Pressure</div>
-            <div class="vitals-value fs-4 fw-bold" style="color: cadetblue;">{{ records.last.blood_pressure|default:'--' }}</div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="vitals-card shadow p-3 text-center" 
-             style="background: #fff; border: 3px solid #fcdc7d; border-radius: 12px;">
-            <div class="vitals-title fw-bold " style="color: cadetblue;">Sugar Level</div>
-            <div class="vitals-value fs-4 fw-bold "style="color: cadetblue;">{{ records.last.sugar_level|default:'--' }} mg/dL</div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="vitals-card shadow p-3 text-center" 
-             style="background: #fff; border: 3px solid #fcdc7d; border-radius: 12px;">
-            <div class="vitals-title fw-bold" style="color: cadetblue;">Temperature</div>
-            <div class="vitals-value fs-4 fw-bold " style="color: cadetblue;">{{ records.last.temperature|default:'--' }} °C</div>
-        </div>
+<!-- VITALS HISTORY -->
+<div class="section-card">
+    <h5 class="fw-bold mb-3">Vitals History</h5>
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead>
+                <tr>
+                    <th>HR</th>
+                    <th>BP</th>
+                    <th>Sugar</th>
+                    <th>Temp</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in records %}
+                <tr>
+                    <td>{{ r.heart_rate|default:"--" }}</td>
+                    <td>{{ r.blood_pressure|default:"--" }}</td>
+                    <td>{{ r.sugar_level|default:"--" }}</td>
+                    <td>{{ r.temperature|default:"--" }}</td>
+                    <td>{{ r.updated_at|date:"d M Y H:i" }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">No records available</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
 
-
-<!-- Health Records Table -->
-
-<h4 style="font-style: italic;" class="mb-3">Health Records History</h4>
-<div class="table-responsive mb-4">
-    <table class="table table-hover table-striped align-middle mb-0"
-           style="border: 3px solid #0bdee6; border-radius: 12px; overflow: hidden;">
- <thead style="background-color: red; color: #0a869f;">
-    <tr>
-        <th>Heart Rate</th>
-        <th>Blood Pressure</th>
-        <th>Sugar Level</th>
-        <th>Temperature</th>
-        <th>Updated</th>
-    </tr>
-</thead>
-
-        <tbody>
-            {% for r in records %}
-            <tr>
-                <td>
-                    <span class="badge" 
-                          style="background-color: #4beded; color: #fff; border-radius: 8px; padding: 5px 10px;">
-                        {{ r.heart_rate }} bpm
-                    </span>
-                </td>
-                <td>
-                    <span class="badge" 
-                          style="background-color:#4beded; color: #fff; border-radius: 8px; padding: 5px 10px;">
-                        {{ r.blood_pressure }}
-                    </span>
-                </td>
-                <td>
-                    <span class="badge" 
-                          style="background-color: #4beded; color: #fff; border-radius: 8px; padding: 5px 10px;">
-                        {{ r.sugar_level }} mg/dL
-                    </span>
-                </td>
-                <td>
-                    <span class="badge" 
-                          style="background-color: #4beded; color: #000; border-radius: 8px; padding: 5px 10px;">
-                        {{ r.temperature }} °C
-                    </span>
-                </td>
-                <td>{{ r.updated_at|date:"d M Y H:i" }}</td>
-            </tr>
-            {% empty %}
-            <tr>
-                <td colspan="5" class="text-center">No health records yet.</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-
-
-<!-- Add Health Record Form -->
-
-<h4 style="font-style: italic;" class="mb-3">Add New Health Record</h4>
-<div class="card-glass p-4 mb-5" 
-     style="background: rgba(255,255,255,0.15); 
-            backdrop-filter: blur(12px); 
-            border: 3px solid #0aa0b7; 
-            border-radius: 16px; 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);">
-
+<!-- ADD RECORD -->
+<div class="section-card">
+    <h5 class="fw-bold mb-3">Add New Health Record</h5>
     <form method="POST" class="row g-3">
         {% csrf_token %}
         {{ form.as_p }}
-
-        <div class="col-12 text-center">
-            <button class="btn btn-success btn-glass" 
-                    style="border-radius: 10px; font-weight: 600; padding: 10px 20px; 
-                           box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
-                <i class="bi bi-plus-circle"></i> Add Record
-            </button>
+        <div class="text-center">
+            <button class="btn btn-success px-4">➕ Save Record</button>
         </div>
     </form>
 </div>
