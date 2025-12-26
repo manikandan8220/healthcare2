@@ -1,0 +1,341 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+
+<!-- content 1 -->
+
+
+<div class="container-fluid px-0">
+  <section class="bg-section d-flex align-items-center">
+    <div class="container text-center text-lg-start">
+      <div class="row justify-content-center">
+
+        <!-- LEFT CONTENT -->
+        <div class="col-lg-6 text-white content-box">
+          <h1 class="fw-bold display-5 mb-4" style="color: rgb(66, 200, 218);">
+            World-Class Healthcare Services
+          </h1>
+
+          <p class="fs-5 mb-4 text-light opacity-90">
+            We deliver advanced medical care using modern technology,
+            expert doctors, and a patient-first approach to ensure
+            safety, comfort, and trust at every stage of treatment.
+          </p>
+
+          <div class="d-flex gap-3 flex-wrap justify-content-center justify-content-lg-start">
+            <a href="{% url 'doctor_portal' %}" class="btn btn-outline-light btn-lg rounded-pill px-4">
+              Learn More
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  .bg-section {
+    position: relative;
+    min-height: 80vh;
+    background: url("/static/images/pic27.jpg") center/cover no-repeat;
+  }
+
+  .bg-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+  }
+
+  .bg-section .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  .content-box {
+    padding: 40px 20px;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .content-box {
+      text-align: center;
+    }
+
+    .content-box h1 {
+      font-size: 2rem;
+    }
+
+    .d-flex.justify-content-lg-start {
+      justify-content: center !important;
+    }
+  }
+</style>
+
+
+<!-- content -2 -->
+
+
+<div class="container-fluid px-0">
+  <section class="hero-section py-5 bg-light">
+    <!-- SECTION TITLE -->
+    <div class="container text-center mb-5">
+      <h2 class="fw-bold" style="color: rgb(221, 103, 189);">
+        World-Class Healthcare Services
+      </h2>
+      <p class="fs-5 opacity-75 mt-3">
+        Compassionate care, cutting-edge technology, and expert medical professionals — all in one place.
+      </p>
+    </div>
+
+    <div class="container">
+      <div class="row align-items-center">
+
+        <!-- LEFT CONTENT -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <h3 class="fw-bold mb-3" style="color: #333;">
+            Your Health, Our Priority
+          </h3>
+          <p class="fs-5 mb-4 opacity-90" style="color: #555;">
+            At our healthcare center, we combine the latest medical advancements with a patient-first approach. 
+            From routine check-ups to specialized treatments, we ensure safety, comfort, and trust at every step of your journey.
+          </p>
+          <a href="{% url 'patient_portal' %}" class="btn btn-primary btn-lg rounded-pill px-4">
+            Learn More
+          </a>
+        </div>
+
+        <!-- RIGHT IMAGE -->
+        <div class="col-lg-6 text-center">
+          <img src="/static/images/pic24.jpg" alt="Healthcare" class="img-fluid rounded shadow-lg">
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+.hero-section {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #f9fafd;
+}
+
+.row.align-items-center {
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .row.align-items-center {
+    flex-direction: column-reverse; 
+    text-align: center;
+  }
+
+  .col-lg-6 {
+    margin-top: 20px;
+  }
+}
+.btn-primary {
+  background-color: rgb(66, 200, 218);
+  border: none;
+  color: white;
+}
+.btn-primary:hover {
+  background-color: rgb(0, 170, 200);
+  color: white;
+}
+</style>
+
+
+
+<!-- content 3 -->
+
+<div class="container py-5">
+
+  <!-- SECTION TITLE -->
+  <div class="text-center mb-5">
+    <h2 class="fw-bold" style="color: rgb(209, 80, 203);">
+      Our Core Healthcare Services
+    </h2>
+    <p class="text-secondary fs-5 mt-2">
+      Delivering expert care, advanced technology, and 24/7 support.
+    </p>
+  </div>
+
+  <!-- 4-COLUMN ROW -->
+  <div class="row text-center g-4">
+
+    <!-- ITEM 1 -->
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="feature-card fade-up">
+        <img src="/static/images/pic25.jpg" alt="Advanced Care" class="img-fluid rounded shadow mb-3">
+        <h5 class="fw-bold mb-2">Advanced Care</h5>
+        <p class="text-secondary">Cutting-edge technology and expert doctors.</p>
+      </div>
+    </div>
+
+    <!-- ITEM 2 -->
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="feature-card fade-up" style="animation-delay: 0.2s;">
+        <img src="/static/images/pic26.jpg" alt="Personalized Care" class="img-fluid rounded shadow mb-3">
+        <h5 class="fw-bold mb-2">Personalized Care</h5>
+        <p class="text-secondary">Tailored treatments with patient-first approach.</p>
+      </div>
+    </div>
+
+    <!-- ITEM 3 -->
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="feature-card fade-up" style="animation-delay: 0.4s;">
+        <img src="/static/images/pic27.jpg" alt="Expert Doctors" class="img-fluid rounded shadow mb-3">
+        <h5 class="fw-bold mb-2">Expert Doctors</h5>
+        <p class="text-secondary">Highly experienced specialists in every field.</p>
+      </div>
+    </div>
+
+    <!-- ITEM 4 -->
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="feature-card fade-up" style="animation-delay: 0.6s;">
+        <img src="/static/images/pic28.jpg" alt="24/7 Support" class="img-fluid rounded shadow mb-3">
+        <h5 class="fw-bold mb-2">24/7 Support</h5>
+        <p class="text-secondary">Always available for patient guidance and help.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+.feature-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 992px) {
+  .feature-card {
+    margin-bottom: 20px;
+  }
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+<div class="container-fluid px-0">
+  <section class="hero-section py-5 bg-light">
+    <!-- SECTION TITLE -->
+    <div class="container text-center mb-5">
+      <h2 class="fw-bold" style="color: rgb(231, 91, 182);">
+        Advanced Care, Personalized for You
+      </h2>
+      <p class="fs-5 opacity-75 mt-3">
+        Bridging expertise and compassion to deliver world-class healthcare tailored to your needs.
+      </p>
+    </div>
+
+    <div class="container">
+      <div class="row align-items-center">
+
+        <!-- LEFT IMAGE -->
+        <div class="col-lg-6 text-center mb-4 mb-lg-0">
+          <img src="/static/images/pic25.jpg" alt="Healthcare" class="img-fluid rounded shadow-lg">
+        </div>
+
+        <!-- RIGHT CONTENT -->
+        <div class="col-lg-6">
+          <h3 class="fw-bold mb-3" style="color: #333;">
+            Comprehensive Health Solutions
+          </h3>
+          <p class="fs-5 mb-4 opacity-90" style="color: #555;">
+            We provide complete healthcare services with a focus on prevention, treatment, and recovery. 
+            Our dedicated team ensures you receive the best care, from early diagnosis to advanced therapies.
+          </p>
+          <ul class="mb-4" style="color: #555;">
+            <li>Cutting-Edge Medical Technology</li>
+            <li>Experienced Multidisciplinary Team</li>
+            <li>Personalized Treatment Plans</li>
+          </ul>
+          <a href="#" class="btn btn-primary btn-lg rounded-pill px-4">
+            Explore Our Services
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+.hero-section {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #f9fafd;
+}
+
+.row.align-items-center {
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .row.align-items-center {
+    flex-direction: column; 
+    text-align: center;
+  }
+
+  .col-lg-6 {
+    margin-top: 20px;
+  }
+}
+
+.btn-primary {
+  background-color: rgb(234, 136, 51);
+  border: none;
+  color: white;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: rgb(0, 170, 200);
+  color: white;
+}
+</style>
+
+
+
+
+
+{% endblock %}

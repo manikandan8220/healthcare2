@@ -1,158 +1,292 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
 
-<!-- =============================== -->
-<!--   ENTERPRISE PATIENT DIRECTORY  -->
-<!-- =============================== -->
-
 <style>
-/* ===== Page Header ===== */
-.page-header{
-    background-color: rgb(166, 132, 166);
-    padding: 28px 30px;
-    border-radius: 18px;
-    color: #fff;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+/* ===== PAGE HEADER ===== */
+.page-header {
+  background: linear-gradient(135deg, var(--primary), #70c0cc);
+  padding: 30px 32px;
+  border-radius: 22px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 18px 40px rgba(66, 200, 218, .35);
 }
-.page-header h2{font-weight:900;margin:0}
-
-/* ===== Action Bar ===== */
-.action-bar{
-    margin-top:25px;
-    background:#fff;
-    padding:20px;
-    border-radius:16px;
-    box-shadow:0 6px 20px rgba(0,0,0,0.12);
-}
-.search-input{
-    border-radius:30px;
-    padding:12px 18px;
+.page-header h2 {
+  font-weight: 900;
+  margin: 0;
+  font-size: 26px;
 }
 
-/* ===== Patient Cards ===== */
-.patient-grid{
-    margin-top:30px;
+/* ===== SEARCH BAR ===== */
+.action-bar {
+  margin-top: 28px;
+  background: var(--card);
+  padding: 22px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
 }
-.patient-card{
-    background:#fff;
-    border-radius:20px;
-    padding:22px;
-    height:100%;
-    box-shadow:0 8px 25px rgba(0,0,0,0.12);
-    transition:.3s;
-    border-left:6px solid #0dcaf0;
+.search-wrapper {
+  display: flex;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 50px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
 }
-.patient-card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 14px 35px rgba(0,0,0,0.18);
+.search-wrapper input {
+  flex-grow: 1;
+  padding: 12px 20px;
+  border: none;
+  outline: none;
+  font-size: 15px;
 }
-.patient-name{
-    font-size:20px;
-    font-weight:800;
-    color:#0d6efd;
+.search-wrapper button {
+  background: linear-gradient(135deg, var(--primary), #70c0cc);
+  border: none;
+  padding: 0 20px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-.patient-meta{
-    font-size:14px;
-    color:#6c757d;
-}
-
-/* ===== Gender Tags ===== */
-.tag{
-    padding:5px 12px;
-    border-radius:20px;
-    font-size:13px;
-    font-weight:700;
-}
-.tag-male{background:#e7f1ff;color:#0d6efd}
-.tag-female{background:#ffe7f0;color:#d63384}
-.tag-other{background:#f1f3f5;color:#495057}
-
-/* ===== Buttons ===== */
-.btn-view{
-    background:#0df0b3;
-    color:#fff;
-    font-weight:700;
-    border-radius:25px;
-}
-.btn-view:hover{background:#0aa2c0;color:#fff}
-
-.btn-delete{
-    background:#dc3545;
-    color:#fff;
-    font-weight:700;
-    border-radius:25px;
+.search-wrapper button:hover {
+  background: linear-gradient(135deg, #4db3c9, #3fa1aa);
 }
 
-/* ===== Empty State ===== */
-.empty-box{
-    background:#fff;
-    border-radius:18px;
-    padding:40px;
+/* ===== TABLE STYLING ===== */
+.table-container {
+  margin-top: 35px;
+  overflow-x: auto;
+  background: var(--card);
+  border-radius: 22px;
+  box-shadow: 0 14px 35px rgba(0,0,0,.12);
+}
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 15px;
+}
+.table th, .table td {
+  padding: 18px 20px;
+  text-align: left;
+  vertical-align: middle;
+}
+.table th {
+  background: rgba(66,200,218,.1);
+  font-weight: 700;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.table tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+}
+.table tbody tr:nth-child(even) {
+  background: rgba(66,200,218,.03);
+}
+.table tbody tr:hover {
+  background: rgba(66,200,218,.15);
+  transform: translateX(2px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* ===== GENDER TAGS ===== */
+.tag {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  font-weight: 700;
+  display: inline-block;
+}
+.tag-male {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+.tag-female {
+  background: #fce7f3;
+  color: #be185d;
+}
+.tag-other {
+  background: #f1f5f9;
+  color: #334155;
+}
+
+/* ===== BUTTONS ===== */
+.btn-view {
+  background: linear-gradient(135deg,var(--primary),#70c0cc);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 25px;
+  padding: 6px 14px;
+  font-size: 14px;
+  border: none;
+  transition: all 0.3s ease;
+}
+.btn-view:hover {
+  box-shadow: 0 8px 20px rgba(66,200,218,.45);
+  color: #fff;
+}
+.btn-delete {
+  background: #dc3545;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 25px;
+  padding: 6px 14px;
+  font-size: 14px;
+}
+.btn-delete:hover {
+  background: #bb2d3b;
+  color: #fff;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .page-header{
+    flex-direction:column;
+    gap:15px;
     text-align:center;
-    box-shadow:0 6px 18px rgba(0,0,0,0.12);
+  }
+  .table th, .table td{
+    padding:12px 10px;
+    font-size: 14px;
+  }
+  .search-wrapper {
+    max-width: 100%;
+    flex-direction: column;
+  }
+  .search-wrapper input {
+    border-radius: 50px 50px 0 0;
+  }
+  .search-wrapper button {
+    border-radius: 0 0 50px 50px;
+    width: 100%;
+    padding: 12px 0;
+  }
 }
 </style>
 
-<!-- HEADER -->
-<div class="page-header d-flex justify-content-between align-items-center">
-    <h2><i class="bi bi-people-fill"></i> Patient Directory</h2>
-    <a href="{% url 'patient_add' %}" class="btn btn-light fw-bold px-4">
-        <i class="bi bi-plus-circle"></i> Add Patient
-    </a>
+<!-- ===== HEADER ===== -->
+<div class="page-header">
+  <h2>
+    <i class="bi bi-people-fill"></i> Patient Directory
+  </h2>
+  <a href="{% url 'patient_add' %}" class="btn btn-light fw-bold px-4">
+    <i class="bi bi-plus-circle"></i> Add Patient
+  </a>
 </div>
 
-<!-- ACTION BAR -->
+<!-- ===== SINGLE SEARCH BOX ===== -->
 <div class="action-bar">
-    <form method="GET" class="row g-2 align-items-center">
-        <div class="col-md-9" style="background-color: #d63384;">
-            <input type="text" name="search" value="{{ request.GET.search }}" class="form-control search-input" placeholder="Search by name, phone, gender...">
-        </div>
-        <div class="col-md-3 d-grid">
-            <button class="btn btn-warning fw-bold">
-                <i class="bi bi-search"></i> Search
-            </button>
-        </div>
-    </form>
+  <form method="GET" class="search-wrapper">
+    <input type="text"
+           name="search"
+           value="{{ request.GET.search }}"
+           placeholder="Search by name, phone, gender...">
+    <button type="submit"><i class="bi bi-search"></i> Search</button>
+  </form>
 </div>
 
-<!-- PATIENT GRID -->
-<div class="row patient-grid g-4">
-    {% for p in patients %}
-    <div class="col-md-6 col-lg-4">
-        <div class="patient-card">
-            <div class="d-flex justify-content-between align-items-center mb-2">
-                <div class="patient-name">{{ p.name }}</div>
-                {% if p.gender == 'Male' %}
-                    <span class="tag tag-male">Male</span>
-                {% elif p.gender == 'Female' %}
-                    <span class="tag tag-female">Female</span>
-                {% else %}
-                    <span class="tag tag-other">{{ p.gender }}</span>
-                {% endif %}
-            </div>
-            <div class="patient-meta">Age: {{ p.age }} years</div>
-            <div class="patient-meta mb-3">Contact: {{ p.contact }}</div>
-
-            <div class="d-flex justify-content-between">
-                <a href="{% url 'patient_detail' p.id %}" class="btn btn-view px-4">
-                    <i class="bi bi-eye"></i> View
-                </a>
-                <a href="{% url 'patient_delete' p.id %}" 
-                   onclick="return confirm('Delete this patient permanently?');"
-                   class="btn btn-delete px-4">
-                    <i class="bi bi-trash"></i> Delete
-                </a>
-            </div>
-        </div>
-    </div>
-    {% empty %}
-    <div class="col-12">
-        <div class="empty-box">
-            <h4 class="fw-bold text-danger"><i class="bi bi-exclamation-circle"></i> No Patients Found</h4>
-            <p class="text-muted mt-2">Try adjusting your search or add a new patient.</p>
-        </div>
-    </div>
-    {% endfor %}
+<!-- ===== PATIENT TABLE ===== -->
+<div class="table-container mt-4">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Contact</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in patients %}
+      <tr>
+        <td>{{ p.name }}</td>
+        <td>
+          {% if p.gender == 'Male' %}
+            <span class="tag tag-male">Male</span>
+          {% elif p.gender == 'Female' %}
+            <span class="tag tag-female">Female</span>
+          {% else %}
+            <span class="tag tag-other">{{ p.gender }}</span>
+          {% endif %}
+        </td>
+        <td>{{ p.age }} yrs</td>
+        <td>{{ p.contact }}</td>
+        <td>
+          <a href="{% url 'patient_detail' p.id %}" class="btn btn-view">
+            <i class="bi bi-eye"></i> View
+          </a>
+          <a href="{% url 'patient_delete' p.id %}"
+             onclick="return confirm('Delete this patient permanently?');"
+             class="btn btn-delete">
+            <i class="bi bi-trash"></i> Delete
+          </a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="5" class="text-center text-danger py-5">
+          <i class="bi bi-exclamation-circle"></i> No Patients Found. Try adjusting your search or add a new patient.
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
+
+
+
+<!-- SIMPLE HEADER -->
+
+
+
+<div class="d-flex align-items-center mb-5 mt-5 p-3"
+     style="border-bottom:1px solid #e5e7eb;">
+
+    <!-- LEFT : BIG & PERFECT LOGO -->
+    <div class="me-4 flex-shrink-0">
+        <img src="{% static 'images/pic15.jpg' %}"
+             alt="Hospital Logo"
+             style="
+                width:480px;
+                max-width:100%;
+                height:auto;
+             ">
+    </div>
+
+    <!-- RIGHT : RICH & CLEAN CONTENT -->
+    <div>
+        <h2 class="fw-bold mb-2" style="color:#0f172a;">
+            HEALTHCARE MULTI SPECIALITY HOSPITAL
+        </h2>
+
+        <div style="font-size:16px; line-height:1.8; color:#374151;">
+            24x7 Emergency & Critical Care Services<br>
+            Advanced Diagnostics • ICU • Pharmacy • Ambulance<br>
+            No.12, Main Road, Thenkasi – Tamil Nadu<br>
+            Phone: +91 98765 43210 | Email: care@healthcare.com
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
 
 {% endblock %}
+
+

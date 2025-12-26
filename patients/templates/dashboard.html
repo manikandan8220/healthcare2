@@ -2,130 +2,387 @@
 {% block content %}
 
 <style>
-:root{
-  --primary:#0ccfc2;
-  --danger:#dc3545;
-  --warning:#ffc107;
-  --success:#198754;
-  --dark:#0f172a;
+
+/* Quick Actions */
+
+.quick-action {
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none !important;  
+}
+.quick-action:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    text-decoration: none !important;  
 }
 
-.dashboard-title{
-  font-size:38px;
-  font-weight:900;
-  color:var(--dark);
-  letter-spacing:1px;
+/* Glass panel */
+.glass {
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(12px);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-.glass{
-  background:rgba(255,255,255,0.85);
-  backdrop-filter:blur(14px);
-  border-radius:22px;
-  box-shadow:0 18px 45px rgba(0,0,0,.15);
+/* Header */
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.dashboard-header .title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #4ccdad;
+}
+.dashboard-header .subtitle {
+    font-size: 1rem;
+    color: #6c757d;
+    max-width: 720px;
+    margin: 0.5rem auto 0 auto;
+    line-height: 1.6;
 }
 
-.stat-card{
-  padding:28px;
-  text-align:center;
-  transition:.3s;
+.quick-action {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none !important;
 }
-.stat-card:hover{transform:translateY(-6px)}
-
-.stat-icon{
-  font-size:42px;
-  margin-bottom:10px;
+.quick-action:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
 }
 
-.stat-value{
-  font-size:42px;
-  font-weight:900;
+.glass {
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(12px);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-.alert-panel{
-  border-left:8px solid var(--danger);
-  padding:28px;
+
+
+
+
+
+
+
+
+
+
+
+
+.feature-image {
+    max-height: 430px;
+    border-radius: 24px;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.15);
 }
 
-.alert-row{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  background:#fff5f5;
-  padding:14px 18px;
-  border-radius:14px;
-  margin-bottom:12px;
-  font-weight:600;
+.feature-badge {
+    background: linear-gradient(135deg,#4ccdad,#51d5cd);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
 }
 
-.quick-action{
-  padding:18px;
-  border-radius:16px;
-  background:linear-gradient(135deg,var(--primary),#00b4d8);
-  color:white;
-  font-weight:700;
-  text-align:center;
-  transition:.3s;
+.feature-title {
+    font-size: 44px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.2;
 }
-.quick-action:hover{transform:scale(1.05)}
+
+.feature-subtitle {
+    font-size: 16px;
+    color: #64748b;
+    line-height: 1.8;
+    max-width: 540px;
+}
+
+.feature-point {
+    font-size: 15.5px;
+    color: #334155;
+    line-height: 1.6;
+}
+
+.feature-btn-primary {
+    background: linear-gradient(135deg,#58d0d8,#51d5cd);
+    color: #fff;
+    font-weight: 700;
+    padding: 12px 28px;
+    border-radius: 50px;
+    border: none;
+    transition: 0.3s;
+}
+
+.feature-btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(88,208,216,.45);
+}
+
+.feature-btn-success {
+    background: linear-gradient(135deg,#198754,#2dc653);
+    color: #fff;
+    font-weight: 700;
+    padding: 12px 28px;
+    border-radius: 50px;
+    border: none;
+    transition: 0.3s;
+}
+
+.feature-btn-success:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(25,135,84,.45);
+}
+
+
+
+
+
+.coverage-badge {
+  background: linear-gradient(135deg,#4ccdad,#51d5cd);
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+}
+
+.coverage-title {
+  font-size: 42px;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.coverage-subtitle {
+  font-size: 16px;
+  color: #64748b;
+  max-width: 520px;
+  line-height: 1.8;
+}
+
+/* STATE CARD */
+.state-card {
+  background: #ffffff;
+  padding: 14px 18px;
+  border-radius: 14px;
+  font-weight: 600;
+  color: #0f172a;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s;
+}
+
+.state-card::before {
+  content: "✔";
+  color: #22c55e;
+  font-weight: bold;
+}
+
+.state-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.15);
+}
+
+/* MAP IMAGE */
+.coverage-map {
+  max-height: 460px;
+  border-radius: 24px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.18);
+}
+
+
+
 </style>
 
-<!-- HEADER -->
-<div class="text-center mb-5">
-  <h1 class="dashboard-title">🏥 Smart Healthcare Dashboard</h1>
-  <p class="text-muted">Real-time hospital monitoring & clinical intelligence</p>
+
+
+<div class="container py-5">
+    <!-- HEADER -->
+    <div class="dashboard-header">
+        <span class="px-4 py-2 rounded-pill fw-semibold d-inline-block mb-3 text-white shadow"
+              style="background-color: coral;">
+            HOSPITAL CONTROL CENTER
+        </span>
+        <h1 class="title">Quick Actions Dashboard</h1>
+        <p class="subtitle">
+            Access your key hospital management actions quickly and efficiently.
+        </p>
+    </div>
+
+   <!-- QUICK ACTIONS SECTION -->
+<div class="container py-5">
+    <div class="row align-items-center justify-content-center g-4">
+
+        <!-- LEFT IMAGE -->
+        <div class="col-lg-6 text-center">
+            <img src="/static/images/pic24.jpg"
+                 alt="Healthcare"
+                 class="img-fluid rounded-4 shadow"
+                 style="max-height:420px;">
+        </div>
+
+        <!-- RIGHT QUICK ACTIONS -->
+        <div class="col-lg-4">
+            <div class="glass w-100">
+                <h5 class="fw-bold mb-4 fs-4 text-center">
+                    Quick Actions
+                </h5>
+
+                <a href="{% url 'patient_list' %}"
+                   class="quick-action d-block mb-3 text-center py-3 rounded-pill text-white text-decoration-none"
+                   style="background:linear-gradient(135deg,#58d0d8,#51d5cd); font-weight:700;">
+                    View Patients
+                </a>
+
+                <a href="{% url 'patient_add' %}"
+                   class="quick-action d-block text-center py-3 rounded-pill text-white text-decoration-none"
+                   style="background:linear-gradient(135deg,#198754,#2dc653); font-weight:700;">
+                    Add New Record
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 
-<!-- STATISTICS -->
-<div class="row g-4">
-  <div class="col-lg-3 col-md-6">
-    <div class="glass stat-card">
-      <div class="stat-icon text-primary material-icons">groups</div>
-      <div class="stat-value">{{ total_patients }}</div>
-      <p class="text-muted">Total Patients</p>
+
+
+
+
+<div class="container py-5">
+    <div class="row align-items-center g-5">
+        <!-- LEFT IMAGE -->
+        <div class="col-lg-6 text-center">
+            <img src="/static/images/pic26.jpg"
+                 alt="Healthcare"
+                 class="img-fluid feature-image">
+        </div>
+
+        <!-- RIGHT CONTENT -->
+        <div class="col-lg-6">
+
+            <span class="badge rounded-pill px-4 py-2 mb-3 feature-badge">
+                HOSPITAL SYSTEM
+            </span>
+            <h1 class="feature-title mb-3">
+                Smart Patient Management
+            </h1>
+            <p class="feature-subtitle mb-4">
+                A modern healthcare platform built to simplify patient records,
+                improve clinical efficiency, and enable faster decision-making
+                with accuracy and confidence.
+            </p>
+
+            <!-- FEATURE POINTS -->
+            <div class="mb-4">
+
+                <div class="d-flex align-items-start mb-3">
+                    <i class="bi bi-check-circle-fill text-success me-3 fs-5"></i>
+                    <p class="mb-0 feature-point">
+                        Centralized patient records with real-time access
+                    </p>
+                </div>
+
+                <div class="d-flex align-items-start mb-3">
+                    <i class="bi bi-check-circle-fill text-success me-3 fs-5"></i>
+                    <p class="mb-0 feature-point">
+                        Quick search, filtering, and smart patient insights
+                    </p>
+                </div>
+
+                <div class="d-flex align-items-start">
+                    <i class="bi bi-check-circle-fill text-success me-3 fs-5"></i>
+                    <p class="mb-0 feature-point">
+                        Secure, scalable, and user-friendly hospital workflow
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- ACTION BUTTONS -->
+            <div class="d-flex gap-3 flex-wrap">
+                <a href="{% url 'patient_list' %}" class="btn feature-btn-primary">
+                    View Patients
+                </a>
+
+                <a href="{% url 'patient_add' %}" class="btn feature-btn-success">
+                    Add New Patient
+                </a>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="col-lg-3 col-md-6">
-    <div class="glass stat-card">
-      <div class="stat-icon text-success material-icons">folder</div>
-      <div class="stat-value">{{ total_records }}</div>
-      <p class="text-muted">Medical Records</p>
+</div>
+
+
+
+<div class="container py-5">
+  <div class="row align-items-center g-5">
+    <!-- LEFT CONTENT -->
+    <div class="col-lg-6">
+
+      <span class="badge rounded-pill px-4 py-2 mb-3 coverage-badge">
+        OUR NETWORK
+      </span>
+
+      <h2 class="coverage-title mb-3">
+        Hospitals Across Multiple States
+      </h2>
+
+      <p class="coverage-subtitle mb-4">
+        Our healthcare services are trusted across multiple states,
+        delivering consistent quality, advanced treatment, and
+        patient-first care wherever you are.
+      </p>
+
+      <!-- STATES LIST -->
+      <div class="row g-3">
+
+        <div class="col-md-6">
+          <div class="state-card">Tamil Nadu</div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="state-card">Kerala</div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="state-card">Karnataka</div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="state-card">Andhra Pradesh</div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="state-card">Telangana</div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="state-card">Maharashtra</div>
+        </div>
+
+      </div>
+
     </div>
-  </div>
-  <div class="col-lg-3 col-md-6">
-    <div class="glass stat-card">
-      <div class="stat-icon text-danger material-icons">monitor_heart</div>
-      <div class="stat-value">{{ critical_bp_count|default:'0' }}</div>
-      <p class="text-muted">Critical BP</p>
-    </div>
-  </div>
-  <div class="col-lg-3 col-md-6">
-    <div class="glass stat-card">
-      <div class="stat-icon text-warning material-icons">local_drink</div>
-      <div class="stat-value">{{ critical_sugar_count|default:'0' }}</div>
-      <p class="text-muted">High Sugar</p>
+
+    <!-- RIGHT MAP -->
+    <div class="col-lg-6 text-center">
+      <img src="/static/images/map.jpg"
+           alt="Hospital Coverage Map"
+           class="img-fluid coverage-map">
     </div>
   </div>
 </div>
 
-<!-- ALERTS + ACTIONS -->
-<div class="row g-4 mt-4">
-  <div class="col-lg-8">
-    <div class="glass alert-panel">
-      <h4 class="fw-bold text-danger mb-3">🚨 Critical Alerts</h4>
-      <div class="alert-row"><span class="material-icons text-danger">favorite</span> Hypertension Patients</div>
-      <div class="alert-row"><span class="material-icons text-warning">local_drink</span> High Sugar Level</div>
-      <div class="alert-row"><span class="material-icons text-primary">ac_unit</span> Hypothermia Risk</div>
-      <div class="alert-row"><span class="material-icons text-danger">monitor_heart</span> Irregular Heart Rate</div>
-    </div>
-  </div>
 
-  <div class="col-lg-4">
-    <div class="glass p-4">
-      <h5 class="fw-bold mb-3">⚡ Quick Actions</h5>
-      <a href="{% url 'patient_list' %}" class="quick-action d-block mb-3">View Patients</a>
-      <div class="quick-action" style="background:linear-gradient(135deg,#198754,#2dc653)">Add New Record</div>
-    </div>
-  </div>
+
+
+
+
+
+
+
 </div>
 
 {% endblock %}

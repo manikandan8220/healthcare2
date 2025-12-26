@@ -1,247 +1,543 @@
 {% extends "base.html" %}
 {% block content %}
+{% load static %}
 
-<!-- ===================================================== -->
-<!-- ADVANCED CLINICAL PATIENT MONITORING SYSTEM -->
-<!-- Hospital Grade | Animated | Visual | Medical Only -->
-<!-- ===================================================== -->
+<!-- ================= HEADER ================= -->
 
-<!-- ================= TOP BAR ================= -->
-<header class="topbar">
-  <div class="container d-flex justify-content-between align-items-center">
-    <div class="brand">
-      <img src="https://cdn-icons-png.flaticon.com/512/2966/2966327.png" alt="medical" />
-      <span>Clinical Patient Monitoring</span>
+<section class="container my-5 py-5">
+  <div class="row align-items-center gy-5">
+    <!-- IMAGE (TOP ON MOBILE) -->
+    <div class="col-12 col-md-6 order-1 order-md-1">
+      <img
+        src="{% static 'images/pic2.jpg' %}"
+        alt="Hospital Monitoring"
+        class="img-fluid w-100 rounded-4"
+        style="box-shadow:0 16px 35px rgba(0,0,0,.22);"
+      >
     </div>
-    <a href="/login/" class="btn btn-sm btn-outline-primary">Staff Login</a>
-  </div>
-</header>
 
-<!-- ================= HERO ================= -->
-<section class="hero">
-  <div class="container text-center">
-    <h1 class="fade-up">Patient Health Monitoring System</h1>
-    <p class="fade-up delay-1">
-      Continuous observation of vital signs for hospital and clinical care.
+    <!-- CONTENT (BOTTOM ON MOBILE) -->
+    <div class="col-12 col-md-6 order-2 order-md-2 text-center text-md-start">
+
+      <h3 class="fw-bold mb-3" style="font-size:28px;color:#0f4c81;">
+        Hospital Patient Monitoring System
+      </h3>
+
+      <p
+        class="mb-4 mx-auto mx-md-0"
+        style="font-size:16px;line-height:1.8;color:#334155;max-width:520px;"
+      >
+        A secure and reliable clinical monitoring platform designed to help
+        doctors and nurses observe patient vital signs in real time. The system
+        supports hospital workflows and improves patient safety.
+      </p>
+
+      <a
+        href="/login/"
+        class="btn text-white fw-semibold px-4 py-2 rounded-pill"
+        style="background:linear-gradient(135deg,#0f4c81,#17b3a3);"
+      >
+        Staff Login
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ================= HERO IMAGE ================= -->
+
+<section style="padding:10px 0;color:#0f4c81;;">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <!-- LEFT CONTENT -->
+      <div class="col-12 col-md-6 text-center text-md-start">
+
+        <h1
+          style="
+            font-size:42px;
+            font-weight:800;
+            margin-bottom:22px;
+            line-height:1.2;
+          ">
+          Advanced Hospital Patient Monitoring
+        </h1>
+
+        <p
+          style="
+            font-size:17px;
+            line-height:1.8;
+            opacity:.95;
+            max-width:520px;
+            margin:0 auto 0 auto;
+          "
+          class="mx-md-0"
+        >
+          A hospital-grade clinical monitoring system designed to support doctors,
+          nurses, and healthcare professionals with accurate and real-time patient
+          health data.
+        </p>
+
+      </div>
+
+      <!-- RIGHT IMAGE -->
+      <div class="col-12 col-md-6">
+        <img
+          src="{% static 'images/pic1.jpg' %}"
+          alt="Patient Monitoring"
+          class="img-fluid w-100"
+          style="
+            border-radius:30px;
+            box-shadow:0 20px 45px rgba(0,0,0,.35);
+          "
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ================= FULL IMAGE ================= -->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<section class="features-section">
+  <div class="container">
+    <h4 class="section-title">Key Features</h4>
+    <p class="section-subtitle">
+      Smart, reliable, and clinically accurate patient monitoring solutions.
     </p>
-  </div>
-</section>
 
-<!-- ================= CORE CAPABILITIES ================= -->
-<section class="container section">
-  <div class="row g-4 text-center">
-    <div class="col-md-3">
-      <div class="capability-card slide-up">
-        <img src="https://cdn-icons-png.flaticon.com/512/942/942751.png" />
-        <h6>Real-Time Monitoring</h6>
+    <!-- CONTINUOUS SCROLL -->
+    <div class="scroll-wrapper">
+      <div class="scroll-track row flex-nowrap gx-4">
+
+        <!-- ORIGINAL -->
+        <div class="col-auto">
+          <div class="feature-card">
+            <div class="icon-box">
+              <img src="https://cdn-icons-png.flaticon.com/512/942/942751.png">
+            </div>
+            <h6>24/7 Continuous Monitoring</h6>
+            <p>Uninterrupted real-time monitoring of vital patient parameters.</p>
+          </div>
+        </div>
+
+        <div class="col-auto">
+          <div class="feature-card">
+            <div class="icon-box">
+              <img src="https://cdn-icons-png.flaticon.com/512/4248/4248443.png">
+            </div>
+            <h6>Clinical Accuracy</h6>
+            <p>Highly accurate medical data for critical healthcare decisions.</p>
+          </div>
+        </div>
+
+        <div class="col-auto">
+          <div class="feature-card">
+            <div class="icon-box">
+              <img src="https://cdn-icons-png.flaticon.com/512/3209/3209265.png">
+            </div>
+            <h6>ICU & Ward Support</h6>
+            <p>Designed for ICU, emergency units, and general hospital wards.</p>
+          </div>
+        </div>
+
+        <div class="col-auto">
+          <div class="feature-card">
+            <div class="icon-box">
+              <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png">
+            </div>
+            <h6>Doctor Friendly Interface</h6>
+            <p>Simple and intuitive dashboard for doctors and nursing staff.</p>
+          </div>
+        </div>
+
+        <div class="col-auto">
+          <div class="feature-card">
+            <div class="icon-box">
+              <img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png">
+            </div>
+            <h6>Centralized Monitoring</h6>
+            <p>Access all patient data securely from a centralized system.</p>
+          </div>
+        </div>
+
+        <!-- DUPLICATE (SEAMLESS LOOP) -->
+        <div class="col-auto">
+          <div class="feature-card">
+            <div class="icon-box">
+              <img src="https://cdn-icons-png.flaticon.com/512/942/942751.png">
+            </div>
+            <h6>24/7 Continuous Monitoring</h6>
+            <p>Uninterrupted real-time monitoring of vital patient parameters.</p>
+          </div>
+        </div>
+
+        <div class="col-auto">
+          <div class="feature-card">
+            <div class="icon-box">
+              <img src="https://cdn-icons-png.flaticon.com/512/4248/4248443.png">
+            </div>
+            <h6>Clinical Accuracy</h6>
+            <p>Highly accurate medical data for critical healthcare decisions.</p>
+          </div>
+        </div>
+
       </div>
     </div>
-    <div class="col-md-3">
-      <div class="capability-card slide-up delay-1">
-        <img src="https://cdn-icons-png.flaticon.com/512/3209/3209265.png" />
-        <h6>ICU & Ward Support</h6>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="capability-card slide-up delay-2">
-        <img src="https://cdn-icons-png.flaticon.com/512/4248/4248443.png" />
-        <h6>Clinical Accuracy</h6>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="capability-card slide-up delay-3">
-        <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" />
-        <h6>Secure Medical Data</h6>
-      </div>
-    </div>
+
   </div>
 </section>
 
-<!-- ================= VITALS DASHBOARD ================= -->
-<section class="container section">
-  <h3 class="section-title text-center">Monitored Vital Signs</h3>
-  <div class="row g-4 mt-4 text-center">
-    <div class="col-md-3"><div class="vital-card bp pulse">Blood Pressure</div></div>
-    <div class="col-md-3"><div class="vital-card hr pulse">Heart Rate</div></div>
-    <div class="col-md-3"><div class="vital-card spo2 pulse">SpO₂</div></div>
-    <div class="col-md-3"><div class="vital-card temp pulse">Temperature</div></div>
-    <div class="col-md-3"><div class="vital-card sugar pulse">Blood Glucose</div></div>
-    <div class="col-md-3"><div class="vital-card rr pulse">Respiratory Rate</div></div>
-    <div class="col-md-3"><div class="vital-card ecg pulse">ECG</div></div>
-    <div class="col-md-3"><div class="vital-card bmi pulse">BMI</div></div>
-  </div>
-</section>
-
-<!-- ================= PATIENT STATUS ================= -->
-<section class="container section">
-  <h3 class="section-title text-center">Patient Condition</h3>
-  <div class="row g-4 mt-4 text-center">
-    <div class="col-md-4">
-      <div class="status-card stable fade-in">Stable</div>
-    </div>
-    <div class="col-md-4">
-      <div class="status-card observe fade-in delay-1">Under Observation</div>
-    </div>
-    <div class="col-md-4">
-      <div class="status-card critical fade-in delay-2">Critical</div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= CLINICAL FLOW ================= -->
-<section class="container section">
-  <h3 class="section-title text-center">Clinical Data Flow</h3>
-  <div class="flow-container">
-    <div class="flow-step">Patient</div>
-    <div class="flow-line"></div>
-    <div class="flow-step">Monitoring Device</div>
-    <div class="flow-line"></div>
-    <div class="flow-step">Hospital System</div>
-    <div class="flow-line"></div>
-    <div class="flow-step">Doctor / Nurse</div>
-  </div>
-</section>
-
-<!-- ================= SECURITY ================= -->
-<section class="container section mb-5">
-  <h3 class="section-title text-center">Medical Data Protection</h3>
-  <div class="security-box fade-up">
-    <p>✔ Role-based access for medical staff</p>
-    <p>✔ Encrypted patient records</p>
-    <p>✔ Secure authentication and audit logs</p>
-  </div>
-</section>
-
-<!-- ================= STYLES ================= -->
 <style>
-body{
-  background:#f4f7fb;
-  font-family:system-ui,-apple-system,"Segoe UI",Roboto;
+.features-section {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #f8fafc, #eef2ff);
 }
 
-/* TOP BAR */
-.topbar{
-  background:#fff;
-  border-bottom:1px solid #e3e6ea;
-  padding:0.8rem 0;
-}
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:600;
-}
-.brand img{width:28px}
-
-/* HERO */
-.hero{
-  background:#e9f4ff;
-  padding:5rem 0;
+.section-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  color: #0f172a;
 }
 
-/* SECTIONS */
-.section{margin:4rem auto}
-.section-title{
-  font-weight:600;
-  border-left:5px solid #0d6efd;
-  padding-left:10px;
+.section-subtitle {
+  text-align: center;
+  color: #64748b;
+  max-width: 600px;
+  margin: 10px auto 40px;
 }
 
-/* CAPABILITIES */
-.capability-card{
-  background:#fff;
-  padding:2rem;
-  border-radius:14px;
-  box-shadow:0 6px 18px rgba(0,0,0,.08);
-}
-.capability-card img{
-  width:48px;
-  margin-bottom:10px;
+/* SCROLL */
+.scroll-wrapper {
+  overflow: hidden;
+  width: 100%;
 }
 
-/* VITALS */
-.vital-card{
-  background:#fff;
-  padding:1.4rem;
-  border-radius:12px;
-  box-shadow:0 4px 12px rgba(0,0,0,.1);
-  font-weight:600;
-}
-.bp{border-left:5px solid #dc3545}
-.hr{border-left:5px solid #198754}
-.spo2{border-left:5px solid #0dcaf0}
-.temp{border-left:5px solid #ffc107}
-.sugar{border-left:5px solid #fd7e14}
-.rr{border-left:5px solid #20c997}
-.ecg{border-left:5px solid #6f42c1}
-.bmi{border-left:5px solid #0d6efd}
-
-/* STATUS */
-.status-card{
-  background:#fff;
-  padding:2rem;
-  border-radius:14px;
-  font-weight:600;
-}
-.stable{border-left:6px solid #198754}
-.observe{border-left:6px solid #ffc107}
-.critical{border-left:6px solid #dc3545}
-
-/* FLOW */
-.flow-container{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
-}
-.flow-step{
-  background:#fff;
-  padding:1rem 1.5rem;
-  border-radius:10px;
-  font-weight:600;
-}
-.flow-line{
-  width:40px;
-  height:2px;
-  background:#0d6efd;
+.scroll-track {
+  width: max-content;
+  animation: scroll-left 25s linear infinite;
 }
 
-/* SECURITY */
-.security-box{
-  background:#fff;
-  padding:2rem;
-  border-radius:14px;
-  max-width:600px;
-  margin:auto;
+/* CARD (UNCHANGED) */
+.feature-card {
+  width: 260px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 18px;
+  padding: 35px 25px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+  transition: 0.4s ease;
 }
 
-/* ANIMATIONS */
-.fade-up{animation:fadeUp 0.8s ease both}
-.fade-in{animation:fadeIn 0.8s ease both}
-.slide-up{animation:slideUp 0.8s ease both}
-.pulse{animation:pulse 2s infinite}
+.feature-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 25px 55px rgba(79,70,229,0.25);
+}
 
-.delay-1{animation-delay:.2s}
-.delay-2{animation-delay:.4s}
-.delay-3{animation-delay:.6s}
+.icon-box {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:none}
+.icon-box img {
+  width: 42px;
+  filter: brightness(0) invert(1);
 }
-@keyframes fadeIn{
-  from{opacity:0}
-  to{opacity:1}
+
+.feature-card h6 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 10px;
 }
-@keyframes slideUp{
-  from{opacity:0;transform:translateY(30px)}
-  to{opacity:1;transform:none}
+
+.feature-card p {
+  font-size: 16px;
+  color: #475569;
+  line-height: 1.6;
+  font-style: italic;
 }
-@keyframes pulse{
-  0%{box-shadow:0 0 0 rgba(13,110,253,.4)}
-  50%{box-shadow:0 0 15px rgba(13,110,253,.4)}
-  100%{box-shadow:0 0 0 rgba(13,110,253,.4)}
+
+/* CONTINUOUS LEFT ➝ RIGHT */
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* optional pause */
+.scroll-wrapper:hover .scroll-track {
+  animation-play-state: paused;
 }
 </style>
+
+
+
+<!-- ================= VITAL PARAMETERS ================= -->
+
+<section class="container section vitals-ui">
+  <div class="vitals-grid">
+
+  <div class="vitals-image">
+  <img
+    src="{% static 'images/pic3.jpg' %}"
+    alt="Vital Monitoring">
+</div>
+
+    <!-- CONTENT -->
+    <div class="vitals-content">
+      <h4 class="section-title">Vital Parameters Monitored</h4>
+
+      <div class="vitals-list">
+
+        <div class="vital-item">❤️ Heart Rate (HR)</div>
+        <div class="vital-item">🩺 Blood Pressure (BP)</div>
+        <div class="vital-item">🫁 Oxygen Saturation (SpO₂)</div>
+        <div class="vital-item">🌡 Body Temperature</div>
+        <div class="vital-item">💨 Respiratory Rate</div>
+        <div class="vital-item">🧪 Blood Glucose</div>
+        <div class="vital-item">📈 Electrocardiogram (ECG)</div>
+        <div class="vital-item">⚖ Body Mass Index (BMI)</div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= WORKFLOW ================= -->
+
+
+<section class="py-5">
+<section class="py-5" style="background: linear-gradient(135deg,#cddceb,#c2c3c7);overflow:hidden;">
+  <div class="container text-center">
+    <h4 class="fw-bold mb-3" style="font-size:30px;color:#0f172a;">Clinical Workflow</h4>
+    <p class="mx-auto mb-5" style="max-width:720px;color:#64748b;font-size:15px;line-height:1.6;">
+      Patient health data flows securely from sensors to doctors, enabling fast and accurate clinical decisions.
+    </p>
+
+    <div class="scroll-container">
+      <div class="scroll-track">
+        <!-- Original Steps -->
+        <div class="step">👤 Patient</div>
+        <div class="step">🩺 Sensors</div>
+        <div class="step">📟 Monitoring</div>
+        <div class="step">🖥️ Server</div>
+        <div class="step">👨‍⚕️ Medical Staff</div>
+
+        <!-- Duplicate for seamless loop -->
+        <div class="step">👤 Patient</div>
+        <div class="step">🩺 Sensors</div>
+        <div class="step">📟 Monitoring</div>
+        <div class="step">🖥️ Server</div>
+        <div class="step">👨‍⚕️ Medical Staff</div>
+      </div>
+    </div>
+  </div>
+</section>
+</section>
+<style>
+.scroll-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.scroll-track {
+  display: flex;
+  gap: 20px; 
+  width: max-content;
+  animation: scroll 15s linear infinite;
+}
+
+.step {
+  flex: 0 0 auto;
+  width: 220px;
+  background: #1b81bd;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  font-size: 16px;
+}
+
+/* Continuous scroll keyframes */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Optional: pause on hover */
+.scroll-container:hover .scroll-track {
+  animation-play-state: paused;
+}
+</style>
+
+
+
+
+<!-- ================= SECURITY ================= -->
+
+
+<section class="image-text reverse">
+  <div class="image-text-img">
+  <img src="{% static 'images/pic5.jpg' %}">
+</div>
+  <div class="image-text-content">
+    <h4>Data Security & Privacy</h4>
+    <ul>
+      <li>Authorized access for doctors and nurses only</li>
+      <li>Encrypted patient medical records</li>
+      <li>Secure login and authentication</li>
+      <li>Compliance with healthcare data standards</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ================= TRUST ================= -->
+
+<section class="container my-5 py-2">
+  <div class="row align-items-center g-4">
+    <!-- LEFT IMAGE -->
+    <div class="col-12 col-md-12 col-lg-3">
+      <img src="{% static 'images/pic2.jpg' %}"
+           alt="Hospital Care"
+           class="img-fluid w-100"
+           style="
+             aspect-ratio:3/4;
+             object-fit:cover;
+             border-radius:24px;
+             box-shadow:0 18px 40px rgba(0,0,0,.25);
+           ">
+    </div>
+
+    <!-- CENTER CONTENT -->
+    <div class="col-12 col-md-12 col-lg-6">
+      <div
+        style="
+          background:#ffffff;
+          padding:92px 48px;
+          border-radius:30px;
+          text-align:center;
+          box-shadow:0 22px 45px rgba(0,0,0,.15);
+        ">
+
+        <h4 style="
+            font-size:28px;
+            font-weight:800;
+            color:#0f4c81;
+            margin-bottom:20px;
+        ">
+          Why Hospitals Trust This System
+        </h4>
+
+        <p style="
+            font-size:16.5px;
+            line-height:1.9;
+            color:#334155;
+            margin:0;
+        ">
+          This advanced hospital-grade monitoring platform improves patient
+          safety, reduces emergency response time, and enhances healthcare
+          quality. Built around real hospital workflows and strict clinical
+          standards to deliver accurate, real-time patient data.
+        </p>
+
+      </div>
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="col-12 col-md-12 col-lg-3">
+      <img src="{% static 'images/pic3.jpg' %}"
+           alt="Medical Technology"
+           class="img-fluid w-100"
+           style="
+             aspect-ratio:3/4;
+             object-fit:cover;
+             border-radius:24px;
+             box-shadow:0 18px 40px rgba(0,0,0,.25);
+           ">
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ================= STYLES ================= -->
+
+<style>
+
+/* VITALS */
+.vitals-ui{
+  background:#ffffff;
+  padding:3.5rem 3rem;
+  border-radius:16px;
+  box-shadow:0 12px 32px rgba(0,0,0,0.06);
+}
+.vitals-grid{
+  display:grid;
+  grid-template-columns:1fr 1.1fr;
+  gap:50px;
+  align-items:center;
+}
+.vitals-image img{
+  width:100%;
+  border-radius:14px;
+  object-fit:cover;
+}
+.vitals-list{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:1.8rem;
+}
+.vital-item{
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:12px;
+  font-size:14px;
+  font-weight:500;
+}
+
+/* IMAGE + TEXT */
+.image-text{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  padding:4rem 5%;
+  align-items:center;
+}
+.image-text.reverse{
+  direction:rtl;
+}
+.image-text.reverse *{
+  direction:ltr;
+}
+.image-text-img img{
+  width:100%;
+  border-radius:10px;
+}
+.image-text-content li{
+  padding:6px 0;
+}
+
+
+</style>
+
 
 {% endblock %}

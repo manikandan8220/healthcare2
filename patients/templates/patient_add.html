@@ -2,32 +2,49 @@
 {% block content %}
 
 <style>
-:root {
-    --primary: #04abab;
-    --success: #28a745;
-    --glass: rgba(255,255,255,0.95);
-}
-
-/* Page Header */
+/* ===== PAGE TITLE ===== */
 .page-title {
     font-size: 32px;
     font-weight: 800;
     color: violet;
     margin-bottom: 30px;
+    text-align: center;
 }
 
-/* Form Card */
+/* ===== CONTAINER FLEX LAYOUT ===== */
+.form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+/* ===== IMAGE SIDE ===== */
+.form-image {
+    max-width: 450px;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+.form-image:hover {
+    transform: scale(1.05);
+}
+
+/* ===== FORM CARD ===== */
 .form-card {
     background: var(--glass);
     border-radius: 18px;
     padding: 30px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     border: 2px solid var(--primary);
-    max-width: 700px;
-    margin: auto;
+    max-width: 500px;
+    flex: 1;
 }
 
-/* Form Inputs */
+/* ===== FORM INPUTS ===== */
 .form-card label {
     font-weight: 600;
     margin-top: 12px;
@@ -50,52 +67,65 @@
     outline: none;
 }
 
-/* Submit Button */
+/* ===== SUBMIT BUTTON ===== */
 .btn-save {
     background: var(--success);
-    color: #fff;
+    color: #51d6f1;
     font-weight: 700;
     padding: 12px 25px;
     border-radius: 12px;
     border: none;
     transition: 0.3s;
     margin-top: 20px;
+    background-color: peru;
 }
 .btn-save:hover {
-    background: #20c997;
+    background: #0f9d73;
     color: #fff;
 }
 
-/* Centering & Responsiveness */
-@media (max-width: 768px) {
-    .form-card {
-        padding: 20px;
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+    .form-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .form-card, .form-image {
+        max-width: 90%;
     }
 }
 </style>
 
-<!-- PAGE HEADER -->
-<h1 class="page-title text-center">➕ Add New Patient</h1>
+<!-- PAGE TITLE -->
+<h1 class="page-title">➕ Add New Patient</h1>
 
-<!-- FORM CARD -->
-<div class="form-card">
-    <form method="POST" novalidate>
-        {% csrf_token %}
-        <div class="row g-3">
-            {% for field in form %}
-            <div class="col-md-6">
-                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                {{ field }}
-                {% if field.errors %}
-                    <div class="text-danger mt-1">{{ field.errors|striptags }}</div>
-                {% endif %}
+<!-- FORM + IMAGE CONTAINER -->
+<div class="form-container">
+
+    <!-- LEFT IMAGE -->
+    <img src="/static/images/pic28.jpg" alt="Patient Form" class="form-image" style="width: 100%; height: 500px;">
+
+    <!-- RIGHT FORM -->
+    <div class="form-card">
+        <form method="POST" novalidate>
+            {% csrf_token %}
+            <div class="row g-3">
+                {% for field in form %}
+                <div class="col-md-6">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="text-danger mt-1">{{ field.errors|striptags }}</div>
+                    {% endif %}
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-        <div class="text-center">
-            <button type="submit" class="btn btn-save">✔ Save Patient</button>
-        </div>
-    </form>
+            <div class="text-center">
+                <button type="submit" class="btn btn-save">✔ Save Patient</button>
+            </div>
+        </form>
+    </div>
+
 </div>
 
 {% endblock %}

@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<!-- cotent 1 -->
+
+
+<div class="container-fluid px-0">
+  <div
+    class="d-flex align-items-center justify-content-center text-center"
+    style="
+      min-height:75vh;
+      background:
+        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.55)),
+        url('{% static 'images/pic9.jpg' %}') center/cover no-repeat;
+    ">
+    <div
+      class="bg-white bg-opacity-10 text-white p-4 p-md-5 rounded-4 shadow-lg"
+      style="backdrop-filter:blur(14px); max-width:700px;"
+    >
+      <h1 class="fw-bold mb-3 display-5 display-md-4">
+        Doctor Clinical Portal
+      </h1>
+
+      <p class="fs-6 fs-md-5 mb-4 opacity-90">
+        A secure medical workspace for doctors to monitor patient health,
+        review clinical reports, track vital signs, and make informed
+        treatment decisions in real time.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<!-- cotent 1 -->
+
+
+<div class="container my-5">
+  <div class="row align-items-center g-5">
+
+    <!-- LEFT IMAGE -->
+    <div class="col-12 col-lg-6 text-center">
+      <img
+        src="{% static 'images/pic10.jpg' %}"
+        alt="Doctor Portal"
+        class="img-fluid rounded-4 shadow-lg"
+        style="max-height:520px; object-fit:cover;"
+      >
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="col-12 col-lg-6">
+
+      <h1 class="fw-bold mb-3" style="color:#0f4c81;">
+        Doctor Clinical Portal
+      </h1>
+
+      <p class="fs-5 text-muted mb-4">
+        A secure and intelligent healthcare workspace designed for doctors to
+        monitor patient vitals, review medical history, analyze clinical data,
+        and make faster, informed treatment decisions.
+      </p>
+
+      <ul class="list-unstyled mb-4">
+        <li class="mb-2">
+          <i class="bi bi-check-circle-fill text-success me-2"></i>
+          Real-time patient vital monitoring
+        </li>
+        <li class="mb-2">
+          <i class="bi bi-check-circle-fill text-success me-2"></i>
+          Access complete medical records
+        </li>
+        <li class="mb-2">
+          <i class="bi bi-check-circle-fill text-success me-2"></i>
+          Clinical reports & analytics dashboard
+        </li>
+        <li class="mb-2">
+          <i class="bi bi-check-circle-fill text-success me-2"></i>
+          Secure doctor-only access
+        </li>
+      </ul>
+
+      <div class="d-flex flex-wrap gap-3">
+        <a href="#" class="btn btn-primary px-4 rounded-pill">
+          View Patients
+        </a>
+
+        <a href="#" class="btn btn-outline-primary px-4 rounded-pill">
+          Clinical Dashboard
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+<div class="container my-5">
+  <div class="row align-items-center g-5">
+
+    <!-- LEFT CONTENT -->
+    <div class="col-12 col-lg-6">
+
+      <h1 class="fw-bold mb-3" style="color:#0f4c81;">
+        Doctor Portal
+      </h1>
+
+      <p class="fs-5 text-muted mb-4">
+       Back in the day, we realised that just as innovation in medical science is elementary to the growth of healthcare, we need to bring innovation in how we take quality healthcare to everyone.
+        We realised that it is not merely a transaction of health services between a patient and doctor. It is trust that fosters a healthy relationship in the journey of health.
+        As we move with the times, we realise that technology has a huge role in making our services way more efficient. And by its application, way more human as well.
+        We have a dream. Our dream is to be available to you round the clock, wherever you are and whenever you want. We want to be just one tap away from you, and this will be the beginning of consumer-centric healthcare.
+      </p>
+
+      <div class="mb-4">
+        <p class="mb-2">
+          <i class="bi bi-check-circle-fill text-success me-2"></i>
+          Take Care
+        </p>
+       
+        <p class="mb-2">
+          <i class="bi bi-check-circle-fill text-success me-2"></i>
+          Dr. Devi Prasad Shetty
+        </p>
+        <p class="mb-2">
+          <i class="bi bi-check-circle-fill text-success me-2"></i>
+          Founder and Chairman
+        </p>
+      </div>
+
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="col-12 col-lg-6">
+      <img
+        src="{% static 'images/doc1.jpg' %}"
+        alt="Doctor Portal"
+        class="img-fluid rounded-4 shadow-lg w-100"
+        style="max-height:520px; object-fit:cover;"
+      >
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
+
+
+
+

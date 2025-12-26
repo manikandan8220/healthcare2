@@ -113,3 +113,50 @@ def patient_delete(request, pk):
     patient = get_object_or_404(Patient, pk=pk)
     patient.delete()
     return redirect("patient_list")
+
+
+
+
+
+
+
+from django.shortcuts import render
+
+def doctor_portal(request):
+    return render(request, 'doctor_portal.html')
+
+def patient_portal(request):
+    return render(request, 'patient_portal.html')
+
+def tele_portal(request):
+    return render(request, 'tele_portal.html')
+
+def about(request):
+    return render(request, 'about.html')
+
+def contact(request):
+    return render(request, 'contact.html')
+
+
+
+
+from django.http import HttpResponse
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+from .models import Patient, HealthRecord
+
+def patient_pdf(request, pk):
+    patient = Patient.objects.get(id=pk)
+    records = HealthRecord.objects.filter(patient=patient)
+
+    template = get_template("patient_pdf.html")
+    html = template.render({
+        "patient": patient,
+        "records": records
+    })
+
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = f'attachment; filename="{patient.name}_report.pdf"'
+
+    pisa.CreatePDF(html, dest=response)
+    return response
